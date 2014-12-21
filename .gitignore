@@ -7,11 +7,10 @@ composer.phar
 
 # Keep "composer.lock" to lock down our dependencies versions
 
-# Keep environment settings: ".env.*.php", ".env.php"
+# Ignore environment settings
+.env.*.php
+.env.php
 
 # Ignore pesky DB and Index files
 .DS_Store
 Thumbs.db
-
-# Omit Session Data
-/app/storage/*.*
