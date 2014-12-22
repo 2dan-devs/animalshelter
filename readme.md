@@ -9,7 +9,3 @@
 ## Animal Shelter Master Site
 
 Master site for any animal shelter non-profit organization.
-
-### Contributing To Laravel
-
-**All issues and pull requests should be filed on the [laravel/framework](http://github.com/laravel/framework) repository.**
