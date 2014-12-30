@@ -30,6 +30,6 @@ Class AnimalPhotos extends Eloquent {
 
 	public function animals ()
 	{
-		return this->belongsTo('Animal'); // Has to match model name
+		return $this->belongsTo('Animal'); // Has to match model name
 	}
 }

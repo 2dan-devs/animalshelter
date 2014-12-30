@@ -8,10 +8,10 @@ class SpecieTableSeeder extends Seeder {
 		DB::table('species')->delete();
 
 		// Seed table with data below.
-		Specie::create(
+		DB::table('species')->insert( array(
 			array('name'=>'Cat'),
 			array('name'=>'Dog')
-		);
+		));
 
 		// Display message if seeding was successful.
 		$this->command->info('Species table seeded!');

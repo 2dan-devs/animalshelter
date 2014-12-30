@@ -9,7 +9,7 @@ class UserTableSeeder extends Seeder {
 
 		// Seed table with data below.
 		User::create(
-			array('username'=>'admin1', 'email'=>, 'admin1@animalshelter.com', 'password'=>Hash::make('password1'))
+			array('username'=>'admin1', 'email'=>'admin1@animalshelter.com', 'password'=>Hash::make('password1'))
 		);
 		
 		// Display message if seeding was successful.

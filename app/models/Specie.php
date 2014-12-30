@@ -29,6 +29,6 @@ Class Specie extends Eloquent {
 
 	public function animals ()
 	{
-		return this->hasMany('Animal'); // Has to match Animal model name.
+		return $this->hasMany('Animal'); // Has to match Animal model name.
 	}
 }

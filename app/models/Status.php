@@ -29,6 +29,6 @@ Class Status extends Eloquent {
 
 	public function animals ()
 	{
-		return this->hasMany('Animal');
+		return $this->hasMany('Animal');
 	}
 }

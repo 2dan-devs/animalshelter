@@ -8,7 +8,7 @@ class StatusTableSeeder extends Seeder {
 		DB::table('status')->delete();
 
 		// Seed table with data below.
-		Status::create(
+		DB::table('status')->insert( array(
 			array('name'=>'Available'),
 			array('name'=>'Sick'),
 			array('name'=>'At Vet'),
@@ -17,7 +17,7 @@ class StatusTableSeeder extends Seeder {
 			array('name'=>'Recovering'),
 			array('name'=>'In Quarantine'),
 			array('name'=>'Lost')
-		);
+		));
 		
 		// Display message if seeding was successful.
 		$this->command->info('Status table seeded!');

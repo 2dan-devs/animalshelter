@@ -18,7 +18,7 @@ Class Event extends Eloquent {
 		// Validation rules.
 		$rules = array(
 			'title'	 =>'required|alpha_num|between:5,30',
-			'address'=>'required|regex:/^[a-z0-9- ]+$/i|min:2',
+			'address'=>'required|regex:/^[a-zA-Z0-9- ]+$/i|min:2',
 	        'city'	 =>'required|alpha|min:2',
 	        'state'	 =>'required|alpha|between:2,2',
 	        'zip'	 =>'required|integer|regex:/[0-9]{5}/',
