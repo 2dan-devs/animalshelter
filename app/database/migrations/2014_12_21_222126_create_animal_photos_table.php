@@ -32,6 +32,6 @@ class CreateAnimalPhotosTable extends Migration {
      */
     public function down()
     {
-        Schema::dropIfExists('animal_photos')
+        Schema::dropIfExists('animal_photos');
     }
 }

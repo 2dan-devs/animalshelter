@@ -23,16 +23,19 @@ return array(
 	| Database Connections
 	|--------------------------------------------------------------------------
 	*/
+	'connections' => array(
 
-	'mysql' => array(
-		'driver'    => 'mysql',
-		'host'      => '127.0.0.1',
-		'database'  => 'dn-animal-shelter',
-		'username'  => 'dnavas',
-		'password'  => 'simoncito',
-		'charset'   => 'utf8',
-		'collation' => 'utf8_unicode_ci',
-		'prefix'    => '',
+		// MySQL database connection settings.
+		'mysql' => array(
+			'driver'    => 'mysql',
+			'host'      => '127.0.0.1',
+			'database'  => 'dn-animal-shelter',
+			'username'  => 'dnavas',
+			'password'  => 'simoncito',
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+		)
 	),
 
 	/*
@@ -41,5 +44,5 @@ return array(
 	|--------------------------------------------------------------------------
 	*/
 
-	'migrations' => 'migrations',
+	'migrations' => 'migrations'
 );
