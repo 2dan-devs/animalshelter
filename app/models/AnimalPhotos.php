@@ -28,6 +28,7 @@ Class AnimalPhotos extends Eloquent {
 
 	/************************* RELATIONSHIPS ***************************/
 
+	// One photo can only belong to one animal.
 	public function animals ()
 	{
 		return $this->belongsTo('Animal'); // Has to match model name

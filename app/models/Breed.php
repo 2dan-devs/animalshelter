@@ -20,15 +20,23 @@ Class Breed extends Eloquent {
 	{
 		// Validation rules.
 		$rules = array(
-			'name' => 'required|alpha|between:3,20|unique:breeds'
+			'name' => 'required|alpha|between:3,20|unique:cat_breeds',
+			'specie_id' =>'required|integer'
 		);
 		return Validator::make($input, $rules);
 	}
 
 	/************************* RELATIONSHIPS ***************************/
 
-	public function animals ()
+	// One breed can belong to many animals.
+	public function animal()
 	{
 		return $this->hasMany('Animal'); // Has to match Animal model name.
+	}
+
+	// One breed can only belong to once specie.
+	public function specie()
+	{
+		return $this->belongsTo('Specie') // Has to match Specie model name.
 	}
 }

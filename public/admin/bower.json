@@ -1,0 +1,25 @@
+{
+  "name": "animalshelter",
+  "version": "1.0.0",
+  "homepage": "www.danilonavas.net",
+  "authors": [
+    "dnavas <danilo.navas@outlook.com>"
+  ],
+  "description": "animal shelter components",
+  "keywords": [
+    "animal",
+    "shelter"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.5.0",
+    "font-awesome": "~4.2.0"
+  }
+}

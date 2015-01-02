@@ -18,7 +18,7 @@ Class Event extends Eloquent {
 		// Validation rules.
 		$rules = array(
 			'title' 	=>'required|alpha_num|between:5,30',
-			'event_date'=>'required|date_format:m/d/Y|regex:/[0-9]{2}\/[0-9]{2}\/[0-9]{4}/',
+			'event_date'=>'required|date_format:m/d/Y|regex:/[0-9]{2}\/[0-9]{2}\/20[0-9]{2}/',
 			'body'		=>'required|alpha_num|between:10,500',
 			'completed' =>'boolean'
 		);

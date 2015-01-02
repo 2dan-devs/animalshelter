@@ -41,4 +41,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		);
 		return Validator::make($input, $rules);
 	}
+
+	/************************* RELATIONSHIPS ***************************/
+
+	// One user can enter many animal records.
+	public function animal()
+	{
+		return $this->hasMany('Animal');
+	}
 }

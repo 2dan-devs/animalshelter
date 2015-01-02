@@ -17,6 +17,10 @@ class CreateBreedsTable extends Migration {
 			// Table columns
 			$table->increments('id'); // Auto incrementing Primary Key.
 			$table->string('name')->unique();
+
+			// 'id' from species table. Foreign key.
+			$table->integer('specie_id')->unsigned();
+			$table->foreign('specie_id')->references('id')->on('species');
 		});
 	}
 

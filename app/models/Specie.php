@@ -27,8 +27,15 @@ Class Specie extends Eloquent {
 
 	/************************* RELATIONSHIPS ***************************/
 
-	public function animals ()
+	// One specie can belong to many animals.
+	public function animal()
 	{
 		return $this->hasMany('Animal'); // Has to match Animal model name.
+	}
+
+	// One specie can have many breeds.
+	public function breed()
+	{
+		return $this->hasMany('Breed'); // Has to match Breed model name.
 	}
 }

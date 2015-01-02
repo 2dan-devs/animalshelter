@@ -18,14 +18,14 @@ Class Event extends Eloquent {
 		// Validation rules.
 		$rules = array(
 			'title'	 =>'required|alpha_num|between:5,30',
-			'address'=>'required|regex:/^[a-zA-Z0-9- ]+$/i|min:2',
+			'address'=>'required|regex:/^\d{1,5}\s[A-Za-z.]+\s[A-Za-z.]{2,7}$/|min:2',
 	        'city'	 =>'required|alpha|min:2',
 	        'state'	 =>'required|alpha|between:2,2',
-	        'zip'	 =>'required|integer|regex:/[0-9]{5}/',
+	        'zip'	 =>'required|integer|regex:/^[0-9]{5}$/',
 			'email_1'=>'required|between:3,64|email',
 			'email_2'=>'between:3,64|email',
-			'phone_1'=>'required|numeric|regex:/[0-9]{10,11}/',
-			'phone_2'=>'numeric|regex:/[0-9]{10,11}/'			
+			'phone_1'=>'required|numeric|regex:/^\(?[0-9]{3}\)?-?[0-9]{3}[-. ]?[0-9]{4}$/',
+			'phone_2'=>'numeric|regex:/^\(?[0-9]{3}\)?-?[0-9]{3}[-. ]?[0-9]{4}$/'
 		);
 		return Validator::make($input, $rules);
 	}

@@ -11,23 +11,38 @@
 |
 */
 
+// Display view (homepage) in /app/views/index.php
 Route::get('/', function()
 {
 	return View::make('index');
 });
 
+/* --------------------------- ADMIN ROUTES ---------------------------- */
 
-/*
-	Front End API Routes:
-		1. client_api/all_cats
- 		2. client_api/all_dogs
-		3. client_api/cat/{id}
-		4. client_api/dog/{id}
-		5. client_api/events
-		6. client_api/subscribe
-*/
-Route::group(array('prefix' => 'client_api'), function() {
+Route::group(array('prefix' => 'admin'), function() {
 
+	// Display view in /app/views/admin/login.blade.php
+	Route::get('login', function()
+	{
+		return View::make('login');
+	});
+
+	// Display dashboard view in /app/views/admin/dashboard.blade.php
+	Route::get('dashboard', function()
+	{
+		return View::make('admin.dashboard')->with('title', 'Dashboard');
+	});
+
+	// Resource of Routes for Animal model for CRUD operations. Routes: index, create, store, show, edit, update, destroy.
+	Route::resource('animal', 'AnimalController');
+});
+/* --------------------------- END ADMIN ROUTES ------------------------- */
+
+
+/* ----------------------- ANGULAR.JS API ROUTES ------------------------ */
+
+Route::group(array('prefix' => 'client_api'), function()
+{
 	Route::get('all_cats', 'ClientApiController@getAllCats');
 	Route::get('all_dogs', 'ClientApiController@getAllDogs');
 	Route::get('cat/{id}', 'ClientApiController@showCat');
@@ -35,3 +50,4 @@ Route::group(array('prefix' => 'client_api'), function() {
 	Route::get('events', 'ClientApiController@getAllEvents');
 	Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
 });
+/* ---------------------- END ANGULAR.JS API ROUTES ---------------------- */

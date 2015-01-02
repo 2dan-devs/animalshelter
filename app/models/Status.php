@@ -27,6 +27,7 @@ Class Status extends Eloquent {
 
 	/************************* RELATIONSHIPS ***************************/
 
+	// One status can belong to many animals.
 	public function animals ()
 	{
 		return $this->hasMany('Animal');

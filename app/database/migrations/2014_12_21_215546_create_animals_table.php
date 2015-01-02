@@ -29,13 +29,17 @@ class CreateAnimalsTable extends Migration {
 			$table->integer('specie_id')->unsigned();
 			$table->foreign('specie_id')->references('id')->on('species');
 
-			// 'id' from Breeds table. Foreign key.
-			$table->integer('breed_id')->unsigned();
+			// 'id' from cat_breeds table. Foreign key.
+			$table->integer('breed_id')->unsigned()->nullable();
 			$table->foreign('breed_id')->references('id')->on('breeds');
 
 			// 'id' from Status table. Foreign key.
 			$table->integer('status_id')->unsigned();
 			$table->foreign('status_id')->references('id')->on('status');
+
+			// 'id' from Users table. Foreign key.
+			$table->integer('user_id')->unsigned()->nullable();
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 
