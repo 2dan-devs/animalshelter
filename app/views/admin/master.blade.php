@@ -16,8 +16,12 @@
     {{ HTML::script('admin/bower_components/modernizr/modernizr.js') }}
     <!-- Font-Awesome 4.2.0 -->
     {{ HTML::style('admin/bower_components/font-awesome/css/font-awesome.min.css') }}
+    <!-- jQuery-UI Smoothnees Theme -->
+    {{ HTML::style('admin/bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css') }}
     <!-- Custom CSS file for "master.blade.php" -->
-    {{ HTML::style('admin/css/admin-main.css') }}
+    {{ HTML::style('admin/css/admin-master.css') }}
+    <!-- Allow views to load custom view specific styles -->
+    @yield('styles')
 </head>
 <body>
 	<!--[if lt IE 10]>
@@ -27,7 +31,7 @@
     <!-- Top Bar -->
     <div class="row">
         <div class="top-banner">
-            <h1 class="top-banner-text"><b>Animal Shelter</b></h1>
+            <h2 class="top-banner-text"><b>Animal Shelter</b></h2>
             <h4 class="top-banner-text">Administrator Site</h4>
         </div>
     </div>
@@ -55,13 +59,12 @@
     <div class="row">
         <div class="large-12 columns">
             <section id="main-content">
-                @if (Session::has('message'))
-                    <p class="alert">{{ Session::get('message') }}</p>
-                @endif
                 <!-- Template Title -->
                 <div class="row">
-                    <div class="large-12 columns dash-title">
+                    <div class="large-12 columns view-title">
                         <h3><b>{{$title}}</b></h3>
+                        <!-- Show session messages -->
+                        @if (Session::has('message'))<div class="alert-box success radius">{{ Session::get('message') }}</div>@endif
                     </div>
                 </div><br>
                 <!-- End Template Title -->
@@ -72,14 +75,18 @@
     <!-- End Main Content -->
 
 	<!--############### SCRIPTS THAT CAN BE LOADED AFTER PAGE LOADS ###############-->
-	<!-- jQuery 2.1.3 -->
+    <!-- jQuery 2.1.3 -->
     {{ HTML::script('admin/bower_components/jquery/dist/jquery.min.js') }}
+    <!-- jQuery-UI 1.11.2 -->
+    {{ HTML::script('admin/bower_components/jquery-ui/jquery-ui.min.js') }}
     <!-- FastClick -->
     {{ HTML::script('admin/bower_components/fastclick/lib/fastclick.js') }}
 	<!-- Foundation Responsive JS -->
     {{ HTML::script('admin/bower_components/foundation/js/foundation.min.js') }}
     <!-- Custom JS file for "master.blade.php" -->
     {{ HTML::script('admin/js/admin-main.js') }}
+    <!-- Allow views to load custom view specific scripts -->
+    @yield('scripts')
 
     <!-- Initialize Foundation Framework. Define our JavaScript elements just by using HTML5 data-attributes -->
     <script>

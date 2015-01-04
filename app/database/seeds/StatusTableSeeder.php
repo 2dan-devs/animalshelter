@@ -9,16 +9,17 @@ class StatusTableSeeder extends Seeder {
 
 		// Seed table with data below.
 		DB::table('status')->insert( array(
-			array('name'=>'Available'),
-			array('name'=>'Sick'),
-			array('name'=>'At Vet'),
-			array('name'=>'Put to Sleep'),
-			array('name'=>'In Transit'),
-			array('name'=>'Recovering'),
-			array('name'=>'In Quarantine'),
-			array('name'=>'Lost')
+			['name'=>'Adopted'],
+			['name'=>'Available'],
+			['name'=>'Sick'],
+			['name'=>'At Vet'],
+			['name'=>'Put to Sleep'],
+			['name'=>'In Transit'],
+			['name'=>'Recovering'],
+			['name'=>'In Quarantine'],
+			['name'=>'Lost']
 		));
-		
+
 		// Display message if seeding was successful.
 		$this->command->info('Status table seeded!');
 	}

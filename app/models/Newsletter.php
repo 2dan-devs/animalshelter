@@ -13,7 +13,7 @@ Class Newsletter extends Eloquent {
 	protected $fillable = array('title', 'body', 'template');
 
 	// Validation function accessible from anywhere when validating inputs for this model.
-	public function validate ($input)
+	public static function validate ($input)
 	{
 		// Validation rules.
 		$rules = array(

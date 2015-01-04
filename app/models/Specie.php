@@ -13,10 +13,10 @@ Class Specie extends Eloquent {
 	public $timestamps = false;
 
 	// Specify which attributes are mass-assignable by user controlled input.
-	protected $fillable = array('name');
+	protected $fillable = ['name'];
 
 	// Validation function accessible from anywhere when validating inputs for this model.
-	public function validate ($input)
+	public static function validate ($input)
 	{
 		// Validation rules.
 		$rules = array(

@@ -13,7 +13,7 @@ Class Event extends Eloquent {
 	protected $fillable = array('title', 'address', 'city', 'state', 'zip', 'email_1', 'email_2', 'phone_1', 'phone_2');
 
 	// Validation function accessible from anywhere when validating inputs for this model.
-	public function validate ($input)
+	public static function validate ($input)
 	{
 		// Validation rules.
 		$rules = array(

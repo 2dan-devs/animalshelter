@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+
+/*********** Add Animal Record Template Custom Styles ************/
+
+.create-record-description {
+	height: 100px;
+}
+
+div.ui-datepicker{
+ font-size: 14px;
+}

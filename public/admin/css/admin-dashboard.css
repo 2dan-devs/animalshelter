@@ -1,0 +1,12 @@
+@charset 'UTF-8';
+
+/*********** Dashboard Template Custom Styles ************/
+
+.row .large-4 .panel .dash-button {
+	width: 100%;
+	height: 100%;
+}
+
+.row .large-4 .dash-panel {
+	height: 150px;
+}

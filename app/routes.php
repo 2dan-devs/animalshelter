@@ -1,26 +1,16 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
-|
-*/
-
 // Display view (homepage) in /app/views/index.php
 Route::get('/', function()
 {
 	return View::make('index');
 });
 
-/* --------------------------- ADMIN ROUTES ---------------------------- */
 
-Route::group(array('prefix' => 'admin'), function() {
+/* --------------------------- ADMIN PREFIXED ROUTES ---------------------------- */
 
+Route::group(array('prefix' => '/admin'), function()
+{
 	// Display view in /app/views/admin/login.blade.php
 	Route::get('login', function()
 	{
@@ -34,7 +24,18 @@ Route::group(array('prefix' => 'admin'), function() {
 	});
 
 	// Resource of Routes for Animal model for CRUD operations. Routes: index, create, store, show, edit, update, destroy.
-	Route::resource('animal', 'AnimalController');
+	Route::resource('dashboard/animal', 'AnimalController');
+
+	// API for jQuery to display breeds based on specie selected.
+	Route::get('breed-based-on-specie', function()
+	{
+		$specie_id = Input::get('specie_id');
+		// Get breeds for specie selected.
+		$breeds = Breed::where('specie_id', '=', $specie_id)->orderBy('name')->get();
+
+		// Return data as Json.
+		return Response::json($breeds);
+	});
 });
 /* --------------------------- END ADMIN ROUTES ------------------------- */
 
@@ -43,10 +44,12 @@ Route::group(array('prefix' => 'admin'), function() {
 
 Route::group(array('prefix' => 'client_api'), function()
 {
-	Route::get('all_cats', 'ClientApiController@getAllCats');
-	Route::get('all_dogs', 'ClientApiController@getAllDogs');
-	Route::get('cat/{id}', 'ClientApiController@showCat');
-	Route::get('dog/{id}', 'ClientApiController@showDog');
+	// Get all animals based on specie requested by Angular.
+	Route::get('all_from_specie', 'ClientApiController@getAllFromSpecie');
+
+	// Get specific animal based on specie and id
+	Route::get('{specie_id}', 'ClientApiController@get');
+
 	Route::get('events', 'ClientApiController@getAllEvents');
 	Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
 });

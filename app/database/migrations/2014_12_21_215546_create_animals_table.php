@@ -30,7 +30,7 @@ class CreateAnimalsTable extends Migration {
 			$table->foreign('specie_id')->references('id')->on('species');
 
 			// 'id' from cat_breeds table. Foreign key.
-			$table->integer('breed_id')->unsigned()->nullable();
+			$table->integer('breed_id')->unsigned();
 			$table->foreign('breed_id')->references('id')->on('breeds');
 
 			// 'id' from Status table. Foreign key.
