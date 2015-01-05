@@ -17,7 +17,6 @@ class CreateAnimalPhotosTable extends Migration {
             // Table columns
             $table->increments('id'); // Auto incrementing Primary Key.
             $table->string('image_path')->unique();
-            $table->boolean('is_front_photo')->default(0);
 
             // Foreign Key, 'id' column on animals table.
             $table->integer('animal_id')->unsigned();

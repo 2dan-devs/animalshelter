@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder {
 		Eloquent::unguard();
 
 		// Seed data onto the 'species' table.
-		$this->call('SpecieTableSeeder');
+		$this->call('SpeciesTableSeeder');
 
 		// Seed data onto the 'breeds' table.
 		$this->call('BreedTableSeeder');

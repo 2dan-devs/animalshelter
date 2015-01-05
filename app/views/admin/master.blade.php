@@ -57,22 +57,23 @@
 
     <!-- Main Content -->
     <div class="row">
+        <div class="large-12 columns view-title">
+            <!-- Template Title -->
+            <h3><b>{{$title}}</b></h3>
+            <br>
+            <!-- Show session messages -->
+            @if (Session::has('message'))<div class="alert-box success radius">{{ Session::get('message') }}</div>@endif
+        </div>
+        <!-- Main Content -->
         <div class="large-12 columns">
-            <section id="main-content">
-                <!-- Template Title -->
-                <div class="row">
-                    <div class="large-12 columns view-title">
-                        <h3><b>{{$title}}</b></h3>
-                        <!-- Show session messages -->
-                        @if (Session::has('message'))<div class="alert-box success radius">{{ Session::get('message') }}</div>@endif
-                    </div>
-                </div><br>
-                <!-- End Template Title -->
-                @yield('content')
-            </section>
+            @yield('content')
+        </div>
+        <!-- End Main Content -->
+        <div class="large-12 columns site-footer">
+            <br>
+            <p>&copy 2015 All rights reserved. Designed and developed by <a href="http://www.danilonavas.net">Danilo Navas</a> and Daniel Silver.</p>
         </div>
     </div>
-    <!-- End Main Content -->
 
 	<!--############### SCRIPTS THAT CAN BE LOADED AFTER PAGE LOADS ###############-->
     <!-- jQuery 2.1.3 -->
@@ -88,7 +89,7 @@
     <!-- Allow views to load custom view specific scripts -->
     @yield('scripts')
 
-    <!-- Initialize Foundation Framework. Define our JavaScript elements just by using HTML5 data-attributes -->
+    <!-- Initialize Foundation Framework -->
     <script>
         $(document).foundation();
     </script>

@@ -29,9 +29,9 @@ Route::group(array('prefix' => '/admin'), function()
 	// API for jQuery to display breeds based on specie selected.
 	Route::get('breed-based-on-specie', function()
 	{
-		$specie_id = Input::get('specie_id');
+		$species_id = Input::get('species_id');
 		// Get breeds for specie selected.
-		$breeds = Breed::where('specie_id', '=', $specie_id)->orderBy('name')->get();
+		$breeds = Breed::where('species_id', '=', $species_id)->orderBy('name')->get();
 
 		// Return data as Json.
 		return Response::json($breeds);
@@ -42,15 +42,16 @@ Route::group(array('prefix' => '/admin'), function()
 
 /* ----------------------- ANGULAR.JS API ROUTES ------------------------ */
 
-Route::group(array('prefix' => 'client_api'), function()
+Route::group(array('prefix' => '/client_api'), function()
 {
 	// Get all animals based on specie requested by Angular.
-	Route::get('all_from_specie', 'ClientApiController@getAllFromSpecie');
+	Route::get('all-from-species', 'ClientApiController@getAllFromSpecies');
 
 	// Get specific animal based on specie and id
-	Route::get('{specie_id}', 'ClientApiController@get');
+	Route::get('{animal}', 'ClientApiController@getAnimalData');
 
 	Route::get('events', 'ClientApiController@getAllEvents');
+
 	Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
 });
 /* ---------------------- END ANGULAR.JS API ROUTES ---------------------- */

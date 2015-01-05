@@ -16,6 +16,7 @@ class CreateAnimalsTable extends Migration {
 		{
 			// Table columns
 			$table->increments('id'); // Auto incrementing Primary Key.
+			$table->string('profile_photo')->unique()->nullable();
 			$table->string('shelter_code')->unique()->nullable();
 			$table->date('date_in');
 			$table->date('date_out')->nullable();
@@ -23,11 +24,10 @@ class CreateAnimalsTable extends Migration {
 			$table->date('dob'); // Date of birth
 			$table->string('description');
             $table->string('comments')->nullable();
-			$table->timestamps();
 
 			// 'id' from Species table. Foreign key.
-			$table->integer('specie_id')->unsigned();
-			$table->foreign('specie_id')->references('id')->on('species');
+			$table->integer('species_id')->unsigned();
+			$table->foreign('species_id')->references('id')->on('species');
 
 			// 'id' from cat_breeds table. Foreign key.
 			$table->integer('breed_id')->unsigned();
@@ -40,6 +40,8 @@ class CreateAnimalsTable extends Migration {
 			// 'id' from Users table. Foreign key.
 			$table->integer('user_id')->unsigned()->nullable();
 			$table->foreign('user_id')->references('id')->on('users');
+
+			$table->timestamps();
 		});
 	}
 

@@ -20,11 +20,12 @@ class AnimalController extends \BaseController {
 	public function create()
 	{
 		// Get all data from species table populate select list on view.
-		$species = Specie::all();
+		$species = Species::all();
 		// Get all data from status table to populate select list on view.
 		$statuses = Status::all();
 
-		return View::make('admin.animal.create', ['species'=>$species, 'statuses'=>$statuses])->with('title', 'Create Record');
+		return View::make('admin.animal.create', ['species'=>$species, 'statuses'=>$statuses])
+				->with('title', 'Create Record');
 	}
 
 	/**
@@ -38,58 +39,48 @@ class AnimalController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			// iF validation fails redirect back with errors.
 			return Redirect::back()->withInput()->withErrors($validator);
 		}
 		else
 		{
-			// Create new animal object and store data from form into database.
-			$anim = new Animal;
-			$anim->shelter_code = Input::get('shelter_code');
-			$anim->name = Input::get('name');
+			/******************************** Image Upload Start ***********************/
+			if ( !empty(Input::file('profile_photo')) )
+			{
+				$profile_photo = Input::file('profile_photo');
+				$filename = time()."-". $profile_photo->getClientOriginalName();
+				$path = public_path('admin/img/profile_photos/'. $filename);
 
-			// convert dob to iso date
+				// If something goes wrong when saving image throw nice error to admin.
+				try { Image::make($profile_photo->getRealPath())->save($path);
+				} catch (Exception $e) {
+					return Redirect::back()->with('message', 'Invalid Image File. Please Upload a Different Image.');
+				}
+			}
+			else { $filename = NULL; }
+
+			/************************** Dates Conversion Start *************************/
 			$dob = Input::get('dob');
-			$iso_dob = date("Y-m-d", strtotime($dob));
+			$iso_dob = ( empty($dob) ? NULL : date("Y-m-d", strtotime($dob)) );
 
-			// convert date_in to iso date
 			$date_in = Input::get('date_in');
-			$iso_date_in = date("Y-m-d", strtotime($date_in));
+			$iso_date_in = ( empty($date_in) ? NULL : date("Y-m-d", strtotime($date_in)) );
 
-			// convert date_out to iso date
 			$date_out = Input::get('date_out');
-			$iso_date_out = date("Y-m-d", strtotime($date_out));
+			$iso_date_out = ( empty($date_out) ? NULL : date("Y-m-d", strtotime($date_out)) );
 
+			/***** Create new animal object and store data from form into database. *****/
+			$anim = new Animal;
+			$anim->profile_photo = ( $filename == NULL ? NULL : 'admin/img/profile_photos/'.$filename );
+			$anim->shelter_code = ( empty(Input::get('shelter_code')) ? NULL : Input::get('shelter_code') );
+			$anim->name = Input::get('name');
 			$anim->dob = $iso_dob;
 			$anim->date_in = $iso_date_in;
 			$anim->date_out = $iso_date_out;
-			$anim->specie_id = Input::get('specie_id');
+			$anim->species_id = Input::get('species_id');
 			$anim->breed_id = Input::get('breed_id');
 			$anim->status_id = Input::get('status_id');
 			$anim->description = Input::get('description');
-
-			/********************************** Save Image Start ***********************/
-			$profile_photo = Input::file('profile_photo');
-			$filename = time()."-". $profile_photo->getClientOriginalName();
-			$path = public_path('admin/img/animal_photo_uploads/'. $filename);
-
-			// If something goes wrong when saving image file throw nice error to admin.
-			try { Image::make($profile_photo->getRealPath())->resize(800, 600)->save($path);
-			} catch (Exception $e) {
-				return Redirect::back()->with('message', 'Invalid Image File. Please Upload a Different Image.');
-			}
-			/******************************** End Image Upload *************************/
-
-			// Save animal so we can access its id to save on photos table.
 			$anim->save();
-
-			/********************* Store profile photo on animal_photos table ******************/
-			$anim_photo = new AnimalPhoto;
-			$animal_id = $anim->id;
-			$anim_photo->image_path = 'admin/img/animal_photo_uploads/'.$filename;
-			$anim_photo->animal_id = $animal_id;
-			$anim_photo->save();
-			/********************* End store profile photo ******************/
 
 			return Redirect::back()->with('message', 'Record Created Successfully!');
 		}

@@ -3,10 +3,10 @@
 $(document).ready(function(){
 
 	// Populate breed list based on specie slected.
-	$('#specie').on('change', function(e){
-		var specie_id = e.target.value
+	$('#species').on('change', function(e){
+		var species_id = e.target.value
 		// Ajax
-		$.get("/admin/breed-based-on-specie", {specie_id: specie_id}, function(data){
+		$.get("/admin/breed-based-on-specie", {species_id: species_id}, function(data){
 			// success data
 			$('#breed').empty()
 			$.each(data, function(index, breedObj){

@@ -13,7 +13,7 @@ Class Breed extends Eloquent {
 	public $timestamps = false;
 
 	// Specify which attributes are mass-assignable by user controlled input.
-	protected $fillable = ['name', 'specie_id'];
+	protected $fillable = ['name', 'species_id'];
 
 	// Validation function accessible from anywhere when validating inputs for this model.
 	public static function validate ($input)
@@ -21,7 +21,7 @@ Class Breed extends Eloquent {
 		// Validation rules.
 		$rules = array(
 			'name' => 'required|alpha|between:3,20|unique:cat_breeds',
-			'specie_id' =>'required|integer'
+			'species_id' =>'required|integer'
 		);
 		return Validator::make($input, $rules);
 	}
@@ -35,8 +35,8 @@ Class Breed extends Eloquent {
 	}
 
 	// One breed can only belong to once specie.
-	public function specie()
+	public function species()
 	{
-		return $this->belongsTo('Specie'); // Has to match Specie model name.
+		return $this->belongsTo('Species'); // Has to match Specie model name.
 	}
 }

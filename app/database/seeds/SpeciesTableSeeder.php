@@ -1,6 +1,6 @@
 <?php
 
-class SpecieTableSeeder extends Seeder {
+class SpeciesTableSeeder extends Seeder {
 
 	public function run() {
 

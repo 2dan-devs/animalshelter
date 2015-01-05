@@ -9,7 +9,7 @@
 	<!-- Show Validation Errors -->
 	@if($errors->has())
 	<div class="row">
-		<div class="medium-6 large-6 columns">
+		<div class="medium-12 large-12 columns">
 			@foreach($errors->all() as $error)
 				<div class="alert-box warning radius">{{ $error }}</div>
 			@endforeach
@@ -19,7 +19,7 @@
 	<!-- End Show Validation Errors -->
 
 	<!-- Form Starts -->
-	{{ Form::open(array('url' => 'admin/animal', 'method'=>'post', 'files'=>true)) }}
+	{{ Form::open(array('action' => 'AnimalController@store', 'method'=>'post', 'files'=>true)) }}
 		<div class="row">
 			<div class="medium-4 large-4 columns">
 				<img id="preview-holder" src="#" alt="image preview">
@@ -50,7 +50,7 @@
 		<div class="row">
 			<div class="medium-4 large-4 columns">
 				<label>Select Species
-					<select name="specie_id" id="specie" required>
+					<select name="species_id" id="species" required>
 						<option value="">-</option>
 						@foreach($species as $specie)<option value="{{$specie->id}}">{{$specie->name}}</option>@endforeach
 					</select>

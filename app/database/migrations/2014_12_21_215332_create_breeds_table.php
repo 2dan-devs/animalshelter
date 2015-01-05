@@ -19,8 +19,8 @@ class CreateBreedsTable extends Migration {
 			$table->string('name')->unique();
 
 			// 'id' from species table. Foreign key.
-			$table->integer('specie_id')->unsigned();
-			$table->foreign('specie_id')->references('id')->on('species');
+			$table->integer('species_id')->unsigned();
+			$table->foreign('species_id')->references('id')->on('species');
 		});
 	}
 
