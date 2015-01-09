@@ -47,9 +47,21 @@
                 </ul>
                 <section class="top-bar-section"> <!-- Right Nav Section -->
                     <ul class="right">
-                      <li><a href="#">Edit Profile</a></li>
+                      <li class="has-dropdown">
+                        <a href="#">Actions</a>
+                        <ul class="dropdown">
+                          <li class="top-actions-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
+                          <li class="top-actions-menu-item"><a href="#">View/Edit Animals</a></li>
+                          <li class="top-actions-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
+                          <li class="top-actions-menu-item"><a href="#">Edit Species Breeds Status</a></li>
+                          <li class="top-actions-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
+                          <li class="top-actions-menu-item"><a href="#">Edit Events</a></li>
+                        </ul>
+                      </li>
                       <li class="divider"></li>
-                      <li class="active"><a href="#">Log Out</a></li>
+                      <li class="top-actions-menu-item"><a href="#">Edit Profile</a></li>
+                      <li class="divider"></li>
+                      <li class="top-actions-menu-item"><a href="#">Log Out</a></li>
                     </ul>
                 </section>
             </nav>

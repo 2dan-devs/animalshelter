@@ -43,17 +43,17 @@
 	<div class="row">
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#">Placeholder</a>
+				<a class="dash-button button large radius secondary disabled" href="#"></a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#">Placeholder</a>
+				<a class="dash-button button large radius secondary disabled" href="#"></a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#">Placeholder</a>
+				<a class="dash-button button large radius secondary disabled" href="#"></a>
 			</div>
 		</div>
 	</div>
