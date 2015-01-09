@@ -9,7 +9,8 @@ class AnimalController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.animal.index')->with('animals', Animal::all());
+		$allAnimals = Animal::all();
+		return View::make('admin.animal.index', ['allAnimals'=>$allAnimals])->with('title', 'View / Edit Animals');
 	}
 
 	/**
@@ -21,10 +22,11 @@ class AnimalController extends \BaseController {
 	{
 		// Get all data from species table populate select list on view.
 		$species = Species::all();
+		$breeds = Breed::where('species_id', '=', 1)->orderBy('name')->get();
 		// Get all data from status table to populate select list on view.
 		$statuses = Status::all();
 
-		return View::make('admin.animal.create', ['species'=>$species, 'statuses'=>$statuses])
+		return View::make('admin.animal.create', ['species'=>$species, 'statuses'=>$statuses, 'breeds'=>$breeds])
 				->with('title', 'Create Record');
 	}
 

@@ -14,7 +14,7 @@
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="#">View / Edit<br>Animals</a>
+				<a class="dash-button button large radius" href="{{ URL::to('admin/dashboard/animal') }}">View / Edit<br>Animals</a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">

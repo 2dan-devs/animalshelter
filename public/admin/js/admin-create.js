@@ -1,4 +1,4 @@
-"use strict";
+"use strict"
 
 $(document).ready(function(){
 
@@ -24,17 +24,17 @@ $(document).ready(function(){
 	// Profile photo preview.
 	function imgPreview(input) {
     	if (input.files && input.files[0]) {
-        	var reader = new FileReader();
+        	var reader = new FileReader()
 
             reader.onload = function (e) {
-                $('#preview-holder').attr('src', e.target.result);
+                $('#preview-holder').attr('src', e.target.result)
             }
-        	reader.readAsDataURL(input.files[0]);
+        	reader.readAsDataURL(input.files[0])
     	}
 	}
 
     $("#img-input").change(function(){
-        imgPreview(this);
+        imgPreview(this)
     });
     // End profile photo preview.
 
@@ -42,11 +42,8 @@ $(document).ready(function(){
     $('#reset-form').on('click', function(){
     	$('#preview-holder').attr('src', '')
 
-    	// Clear breeds
-    	$('#breed').empty()
-    	$('#breed').append('<option value="">-</option>')
-
     	// Remove errors
-    	$('.alert-box').remove();
+    	$('.alert-box').remove()
+    	$('.input-error-label').remove()
     })
 })

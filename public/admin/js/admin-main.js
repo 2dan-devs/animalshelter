@@ -2,7 +2,7 @@
 
 $(document).ready(function(){
 
-	$('.top-actions-menu-item').hover(function(){
+	$('.top-bar-menu-item').hover(function(){
 	    $(this).toggleClass('active')
 	})
 })

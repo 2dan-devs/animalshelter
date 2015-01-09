@@ -50,18 +50,20 @@
                       <li class="has-dropdown">
                         <a href="#">Actions</a>
                         <ul class="dropdown">
-                          <li class="top-actions-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
-                          <li class="top-actions-menu-item"><a href="#">View/Edit Animals</a></li>
-                          <li class="top-actions-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
-                          <li class="top-actions-menu-item"><a href="#">Edit Species Breeds Status</a></li>
-                          <li class="top-actions-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
-                          <li class="top-actions-menu-item"><a href="#">Edit Events</a></li>
+                          <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
+                          <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal') }}">View / Edit Animals</a></li>
+                          <li class="top-bar-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
+                          <li class="top-bar-menu-item"><a href="#">Edit Species Breeds Status</a></li>
+                          <li class="top-bar-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
+                          <li class="top-bar-menu-item"><a href="#">Edit Events</a></li>
                         </ul>
                       </li>
                       <li class="divider"></li>
-                      <li class="top-actions-menu-item"><a href="#">Edit Profile</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
                       <li class="divider"></li>
-                      <li class="top-actions-menu-item"><a href="#">Log Out</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Edit Profile</a></li>
+                      <li class="divider"></li>
+                      <li class="top-bar-menu-item"><a href="#"> Log Out </a></li>
                     </ul>
                 </section>
             </nav>
@@ -73,7 +75,7 @@
     <div class="row">
         <div class="medium-12 large-12 columns view-title">
             <!-- Title from View -->
-            <h3>{{$title}}</h3>
+            <h3><b>{{$title}}</b></h3>
             <br>
             <!-- Show session messages -->
             @if (Session::has('message')) {{ Session::get('message') }} @endif
