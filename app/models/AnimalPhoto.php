@@ -20,7 +20,7 @@ Class AnimalPhoto extends Eloquent {
 	{
 		// Validation rules.
 		$rules = array(
-			'image_path' 	=>'required|image|mimes:jpeg,jpg,bmp,png,gif|unique:animal_photos',
+			'image_path' 	=>'required|image|mimes:jpeg,jpg,bmp,png,gif',
 			'animal_id'		=>'required|integer'
 		);
 		return Validator::make($input, $rules);

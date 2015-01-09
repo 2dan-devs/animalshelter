@@ -16,9 +16,12 @@ class CreateNewslettersTable extends Migration {
 		{
 			// Table columns.
 			$table->increments('id'); // Auto incrementing Primary Key.
-			$table->string('title');
-			$table->string('body');
+			$table->string('subject');
+			$table->string('content');
 			$table->tinyInteger('template')->default(1);
+			$table->date('start_date');
+			$table->date('end_date');
+			$table->tinyInteger('send_frequency'); // One Time, Weekly, Bi-Weekly, Monthly.
 			$table->timestamps();
 		});
 	}

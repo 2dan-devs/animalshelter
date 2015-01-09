@@ -14,11 +14,9 @@ class CreateAnimalPhotosTable extends Migration {
     {
         Schema::create('animal_photos', function(Blueprint $table)
         {
-            // Table columns
             $table->increments('id'); // Auto incrementing Primary Key.
-            $table->string('image_path')->unique();
+            $table->string('image_path');
 
-            // Foreign Key, 'id' column on animals table.
             $table->integer('animal_id')->unsigned();
             $table->foreign('animal_id')->references('id')->on('animals')->onDelete('cascade');
         });

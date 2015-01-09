@@ -39,50 +39,84 @@ class AnimalController extends \BaseController {
 
 		if ($validator->fails())
 		{
-			return Redirect::back()->withInput()->withErrors($validator);
+			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		else
 		{
-			/******************************** Image Upload Start ***********************/
-			if ( !empty(Input::file('profile_photo')) )
+			/******************************** Profile Photo Upload ***********************/
+			if ( Input::hasFile('profile_photo') )
 			{
 				$profile_photo = Input::file('profile_photo');
 				$filename = time()."-". $profile_photo->getClientOriginalName();
-				$path = public_path('admin/img/profile_photos/'. $filename);
+				$path = public_path('admin/img/animal_photos/'. $filename);
 
 				// If something goes wrong when saving image throw nice error to admin.
-				try { Image::make($profile_photo->getRealPath())->save($path);
-				} catch (Exception $e) {
-					return Redirect::back()->with('message', 'Invalid Image File. Please Upload a Different Image.');
+				try
+				{
+					Image::make($profile_photo->getRealPath())->save($path);
 				}
-			}
-			else { $filename = NULL; }
-
-			/************************** Dates Conversion Start *************************/
-			$dob = Input::get('dob');
-			$iso_dob = ( empty($dob) ? NULL : date("Y-m-d", strtotime($dob)) );
-
-			$date_in = Input::get('date_in');
-			$iso_date_in = ( empty($date_in) ? NULL : date("Y-m-d", strtotime($date_in)) );
-
-			$date_out = Input::get('date_out');
-			$iso_date_out = ( empty($date_out) ? NULL : date("Y-m-d", strtotime($date_out)) );
+				catch (Exception $e)
+				{
+					return Redirect::back()->with('message', FlashMessage::DisplayAlert('Invalid Image File. Please upload a different image.', 'warning')->withInput());
+				}
+			} else { $filename = NULL;}
 
 			/***** Create new animal object and store data from form into database. *****/
 			$anim = new Animal;
-			$anim->profile_photo = ( $filename == NULL ? NULL : 'admin/img/profile_photos/'.$filename );
 			$anim->shelter_code = ( empty(Input::get('shelter_code')) ? NULL : Input::get('shelter_code') );
 			$anim->name = Input::get('name');
-			$anim->dob = $iso_dob;
-			$anim->date_in = $iso_date_in;
-			$anim->date_out = $iso_date_out;
+			$anim->dob = ( empty(Input::get('dob')) ? NULL : date("Y-m-d", strtotime(Input::get('dob'))) );
+			$anim->date_in = ( empty(Input::get('date_in')) ? NULL : date("Y-m-d", strtotime(Input::get('date_in'))) );
+			$anim->date_out = ( empty(Input::get('date_out')) ? NULL : date("Y-m-d", strtotime(Input::get('date_out'))) );
 			$anim->species_id = Input::get('species_id');
 			$anim->breed_id = Input::get('breed_id');
 			$anim->status_id = Input::get('status_id');
 			$anim->description = Input::get('description');
 			$anim->save();
 
-			return Redirect::back()->with('message', 'Record Created Successfully!');
+			/***************** Save photo on animal_photos table. *************/
+			$photo = new AnimalPhoto;
+			// If image was uploaded by user save it to animal_photos table, otherwise, assign dummy photo.
+			$photo->image_path = ( $filename == NULL ? 'admin/img/animal_photos/000-photo-coming-soon.jpg' : 'admin/img/animal_photos/'. $filename );
+			$photo->animal_id = $anim->id;
+			$photo->save();
+
+			/************* Set photo just saved as profile photo. *************/
+			$anim->front_photo = $photo->id;
+			$anim->save();
+
+			/************************* Photo Set Upload **********************/
+			if ( Input::hasFile('photo_set') )
+			{
+				$photo_set = Input::file('photo_set');
+
+				foreach($photo_set as $one_photo)
+				{
+					$photo_name = time()."-". $one_photo->getClientOriginalName();
+					$loop_path = public_path('admin/img/animal_photos/'. $photo_name);
+
+					try
+					{
+						Image::make($one_photo->getRealPath())->save($loop_path);
+					}
+					catch (Exception $e)
+					{
+						// If something goes wrong when saving image throw nice error to admin.
+						# TODO?: diplay which images failed and saved good ones.
+						return Redirect::back()->with(
+							'message', FlashMessage::DisplayAlert('Record Saved.<br>Warning: image <b>"' .$one_photo->getClientOriginalName(). '"</b> was not saved, invalid format.', 'warning'));
+					}
+					if (!empty($photo_name))
+					{
+						$set_photo = new AnimalPhoto;
+						$set_photo->image_path = $loop_path;
+						$set_photo->animal_id = $anim->id;
+						$set_photo->save();
+					}
+				}
+			}
+
+			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Record Created Successfully!', 'success'));
 		}
 	}
 

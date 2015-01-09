@@ -16,12 +16,12 @@ $(document).ready(function(){
 	})// End populate breed list
 
 	// Date pickers.
-	$('#datepicker_dob').datepicker()
-	$('#datepicker_date-in').datepicker()
-	$('#datepicker_date-out').datepicker()
+	$('#datepicker_dob').datepicker({ maxDate: 0 })
+	$('#datepicker_date-in').datepicker({ maxDate: 0 })
+	$('#datepicker_date-out').datepicker({ maxDate: 0 })
 	// End date pickers
 
-	// Upload image preview.
+	// Profile photo preview.
 	function imgPreview(input) {
     	if (input.files && input.files[0]) {
         	var reader = new FileReader();
@@ -36,7 +36,7 @@ $(document).ready(function(){
     $("#img-input").change(function(){
         imgPreview(this);
     });
-    // End Upload image preview.
+    // End profile photo preview.
 
     // Remove image preview and breed when reset button is clicked.
     $('#reset-form').on('click', function(){

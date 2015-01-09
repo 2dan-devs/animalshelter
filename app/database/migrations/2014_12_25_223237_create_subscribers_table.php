@@ -14,11 +14,8 @@ class CreateSubscribersTable extends Migration {
 	{
 		Schema::create('subscribers', function(Blueprint $table)
 		{
-			// Table columns
 			$table->increments('id'); // Auto incrementing Primary Key.
 			$table->string('email')->unique();
-			$table->boolean('active')->default(1);
-			$table->timestamps();
 		});
 	}
 

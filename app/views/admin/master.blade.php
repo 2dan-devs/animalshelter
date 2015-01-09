@@ -28,13 +28,15 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Top Bar -->
+    <!-- Top BANNER -->
     <div class="row">
         <div class="top-banner">
             <h2 class="top-banner-text"><b>Animal Shelter</b></h2>
-            <h4 class="top-banner-text">Administrator Site</h4>
+            <h5 class="top-banner-text">Administrator Site</h5>
         </div>
     </div>
+    <!-- End Top BANNER -->
+    <!-- Top Nav Bar -->
     <div class="row">
         <div class="large-12">
             <nav class="top-bar" data-topbar role="navigation">
@@ -53,25 +55,39 @@
             </nav>
         </div>
     </div><br>
-    <!-- End Top Bar -->
+    <!-- End Top Nav Bar -->
 
     <!-- Main Content -->
     <div class="row">
-        <div class="large-12 columns view-title">
-            <!-- Template Title -->
-            <h3><b>{{$title}}</b></h3>
+        <div class="medium-12 large-12 columns view-title">
+            <!-- Title from View -->
+            <h3>{{$title}}</h3>
             <br>
             <!-- Show session messages -->
-            @if (Session::has('message'))<div class="alert-box success radius">{{ Session::get('message') }}</div>@endif
+            @if (Session::has('message')) {{ Session::get('message') }} @endif
+            <!-- End show session messages -->
         </div>
+        <!-- Show validation errors -->
+        @if($errors->has())
+        <div class="medium-12 large-12 columns">
+            <div class="alert-box alert val-top-box-errors">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        @endif
+        <!-- End show validation errors -->
         <!-- Main Content -->
-        <div class="large-12 columns">
+        <div class="medium-12 large-12 columns">
             @yield('content')
         </div>
         <!-- End Main Content -->
-        <div class="large-12 columns site-footer">
+        <div class="medium-12 large-12 columns site-footer">
             <br>
-            <p>&copy 2015 All rights reserved. Designed and developed by <a href="http://www.danilonavas.net">Danilo Navas</a> and Daniel Silver.</p>
+            <p>&copy 2015 All rights reserved. Designed and developed by <a href="http://www.danilonavas.net" target="blank">Danilo Navas</a> and Daniel Silver.</p>
         </div>
     </div>
 

@@ -1,6 +1,6 @@
 <?php
 
-Class Event extends Eloquent {
+Class AboutUs extends Eloquent {
 
 		/**
 	 * The database table used by the model.

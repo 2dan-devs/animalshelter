@@ -16,10 +16,10 @@ Class Subscriber extends Eloquent {
 	public static function validate ($input)
 	{
 		// Validation rules
-		$rules = array(
-			'email'	=>'required|between:3,64|email|unique:subscribers',
-			'active'=>'boolean'
-		);
+		$rules = [
+			'email'	=>'required|between:3,64|email|unique:subscribers'
+		];
+
 		return Validator::make($input, $rules);
 	}
 }

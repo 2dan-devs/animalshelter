@@ -6,45 +6,48 @@
 
 @section('content')
 
-	<!-- Show Validation Errors -->
-	@if($errors->has())
-	<div class="row">
-		<div class="medium-12 large-12 columns">
-			@foreach($errors->all() as $error)
-				<div class="alert-box warning radius">{{ $error }}</div>
-			@endforeach
-		</div>
-	</div>
-	@endif
-	<!-- End Show Validation Errors -->
-
 	<!-- Form Starts -->
 	{{ Form::open(array('action' => 'AnimalController@store', 'method'=>'post', 'files'=>true)) }}
 		<div class="row">
-			<div class="medium-4 large-4 columns">
-				<img id="preview-holder" src="#" alt="image preview">
-				<label>Select Profile Photo:<input type="file" name="profile_photo" id="img-input" class="button tiny secondary" accept="image/*"></label>
+			<div class="medium-3 large-3 columns">
+				<img id="preview-holder" src="#" alt="preview">
+				<label>Select Profile Photo (optional):<input type="file" name="profile_photo" id="img-input" class="button tiny secondary" accept="image/*"></label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="medium-4 large-4 columns">
-				<label>Shelter Code:<input type="text" name="shelter_code" placeholder="shelter code"></label>
+				<label>Shelter Code (optional):
+					<input type="text" class="error" name="shelter_code" placeholder="shelter code">
+					@if ($errors->has('shelter_code')) <span class="error">{{ $errors->first('shelter_code') }}</span> @endif
+				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="medium-6 large-6 columns">
-				<label>Animal Name:<input type="text" name="name" placeholder="enter name"></label>
+				<label>Animal Name:
+					<input type="text" name="name" class="error" placeholder="enter name">
+					@if ($errors->has('name')) <span class="error">{{ $errors->first('name') }}</span> @endif
+				</label>
 			</div>
 			<div class="medium-6 large-6 columns">
-				<label>Date of Birth (mm/dd/yyyy):<input type="text" name="dob" id="datepicker_dob" placeholder="click to select date" required></label>
+				<label>Date of Birth (mm/dd/yyyy):
+					<input type="text" name="dob" class="error" id="datepicker_dob" placeholder="click to select date" required>
+					@if ($errors->has('dob')) <span class="error">{{ $errors->first('dob') }}</span> @endif
+				</label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="medium-6 large-6 columns">
-				<label>Date In (mm/dd/yyyy):<input type="text" name="date_in" id="datepicker_date-in" placeholder="click to select date" required></label>
+				<label>Date In (mm/dd/yyyy):
+					<input type="text" name="date_in" class="error" id="datepicker_date-in" placeholder="click to select date" required>
+					@if ($errors->has('date_in')) <span class="error">{{ $errors->first('date_in') }}</span> @endif
+				</label>
 			</div>
 			<div class="medium-6 large-6 columns">
-				<label>Date Out (mm/dd/yyyy):<input type="text" name="date_out" id="datepicker_date-out" placeholder="click to select date"></label>
+				<label>Date Out (mm/dd/yyyy - optional):
+					<input type="text" name="date_out" class="error" id="datepicker_date-out" placeholder="click to select date">
+					@if ($errors->has('date_out')) <span class="error">{{ $errors->first('date_out') }}</span> @endif
+				</label>
 			</div>
 		</div>
 		<div class="row">
@@ -73,13 +76,19 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="medium-12 large-12 columns">
-				<label>Description (max 400 chars):<textarea class="create-record-description" name="description" placeholder="Enter Description"></textarea></label>
+			<div class="medium-8 large-8 columns">
+				<label>Description (max 400 chars):
+					<textarea class="create-record-description error" name="description" placeholder="Enter Description"></textarea>
+					@if ($errors->has('description')) <span class="error">{{ $errors->first('description') }}</span> @endif
+				</label>
+			</div>
+			<div class="medium-4 large-4 columns">
+				<label>Add more photos (optional):<input type="file" name="photo_set[]" id="photo-set" class="button tiny secondary" accept="image/*" multiple></label>
 			</div>
 		</div>
 		<div class="row">
 			<div class="medium-12 large-12 columns">
-				<a href="{{ URL::to('admin/dashboard') }}"><i class="fa fa-chevron-circle-left fa-lg"> Dashboard</i></a>
+				<a href="{{ URL::to('admin/dashboard') }}"><br><i class="fa fa-chevron-circle-left fa-lg"> Dashboard</i></a>
 				{{Form::submit('Create Record', ['class'=>'button small right']);}}
 				{{Form::reset('Reset', ['class'=>'button small secondary right', 'id'=>'reset-form']);}}
 			</div>
