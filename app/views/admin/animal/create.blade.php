@@ -92,7 +92,7 @@
 			<div class="medium-12 large-12 columns">
 				<a href="{{ URL::to('admin/dashboard') }}"><br><i class="fa fa-chevron-circle-left fa-lg"> Dashboard</i></a>
 				{{ Form::submit('Create Record', ['class'=>'button small right']) }}
-				{{ Form::reset('Reset', ['class'=>'button small secondary right', 'id'=>'reset-form']) }}
+				{{ Form::reset('Reset', ['class'=>'button small warning right', 'id'=>'reset-form']) }}
 			</div>
 		</div>
 	{{ Form::close() }}

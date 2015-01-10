@@ -59,7 +59,7 @@ class AnimalController extends \BaseController {
 				}
 				catch (Exception $e)
 				{
-					return Redirect::back()->with('message', FlashMessage::DisplayAlert('Invalid Image File. Please upload a different image.', 'warning')->withInput());
+					return Redirect::back()->with('message', FlashMessage::DisplayAlert('Invalid Image File. Please upload a different image.', 'warning'));
 				}
 			} else { $filename = NULL;}
 
@@ -106,7 +106,7 @@ class AnimalController extends \BaseController {
 						// If something goes wrong when saving image throw nice error to admin.
 						# TODO?: diplay which images failed and saved good ones.
 						return Redirect::back()->with(
-							'message', FlashMessage::DisplayAlert('Record Saved.<br>Warning: image <b>"' .$one_photo->getClientOriginalName(). '"</b> was not saved, invalid format.', 'warning'));
+							'message', FlashMessage::DisplayAlert('Record Saved.<br>Warning: Some photos were not saved.</b>, invalid format.', 'warning'));
 					}
 					if (!empty($photo_name))
 					{

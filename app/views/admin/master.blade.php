@@ -28,52 +28,48 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Top BANNER -->
-    <div class="row">
+    <!-- Top Nav Bar & Banner -->
+    <div class="contain-to-grid">
         <div class="top-banner">
             <h2 class="top-banner-text"><b>Animal Shelter</b></h2>
-            <h5 class="top-banner-text">Administrator Site</h5>
+            <h5 class="top-banner-text">Administrator</h5>
         </div>
-    </div>
-    <!-- End Top BANNER -->
-    <!-- Top Nav Bar -->
-    <div class="row">
-        <div class="large-12">
-            <nav class="top-bar" data-topbar role="navigation">
-                <ul class="title-area">
-                    <li class="name"><h1><a href="#">Logged In: Username</a></h1></li>
-                    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
-                </ul>
-                <section class="top-bar-section"> <!-- Right Nav Section -->
-                    <ul class="right">
-                      <li class="has-dropdown">
-                        <a href="#">Actions</a>
-                        <ul class="dropdown">
-                          <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
-                          <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal') }}">View / Edit Animals</a></li>
-                          <li class="top-bar-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
-                          <li class="top-bar-menu-item"><a href="#">Edit Species Breeds Status</a></li>
-                          <li class="top-bar-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
-                          <li class="top-bar-menu-item"><a href="#">Edit Events</a></li>
-                        </ul>
-                      </li>
-                      <li class="divider"></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
-                      <li class="divider"></li>
-                      <li class="top-bar-menu-item"><a href="#">Edit Profile</a></li>
-                      <li class="divider"></li>
-                      <li class="top-bar-menu-item"><a href="#"> Log Out </a></li>
+        <nav class="top-bar" data-topbar role="navigation">
+            <ul class="title-area">
+                <li class="name"><h1><a href="#">Logged In: Username</a></h1></li>
+                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+                <li class="toggle-topbar menu-icon"><a href="#"><span>More</span></a></li>
+            </ul>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul class="right">
+                  <li class="has-dropdown">
+                    <a href="#">Actions</a>
+                    <ul class="dropdown">
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal') }}">View / Edit Animals</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Edit Species Breeds Status</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Edit Events</a></li>
                     </ul>
-                </section>
-            </nav>
-        </div>
+                  </li>
+                  <li class="divider"></li>
+                  <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
+                  <li class="divider"></li>
+                  <li class="top-bar-menu-item"><a href="#">Edit Profile</a></li>
+                  <li class="divider"></li>
+                  <li class="top-bar-menu-item"><a href="#"> Log Out </a></li>
+                </ul>
+            </section>
+        </nav>
     </div><br>
-    <!-- End Top Nav Bar -->
+    <!-- End Top Nav Bar & Banner -->
 
     <!-- Main Content -->
     <div class="row">
-        <div class="medium-12 large-12 columns view-title">
+        <div class="large-12 columns view-title">
+
             <!-- Title from View -->
             <h3><b>{{$title}}</b></h3>
             <br>
@@ -81,9 +77,10 @@
             @if (Session::has('message')) {{ Session::get('message') }} @endif
             <!-- End show session messages -->
         </div>
+
         <!-- Show validation errors -->
         @if($errors->has())
-        <div class="medium-12 large-12 columns">
+        <div class="large-12 columns">
             <div class="alert-box alert val-top-box-errors">
                 <ul>
                     @foreach($errors->all() as $error)
@@ -94,14 +91,33 @@
         </div>
         @endif
         <!-- End show validation errors -->
+
         <!-- Main Content -->
-        <div class="medium-12 large-12 columns">
+        <div class="large-12 columns">
             @yield('content')
         </div>
         <!-- End Main Content -->
-        <div class="medium-12 large-12 columns site-footer">
-            <br>
-            <p>&copy 2015 All rights reserved. Designed and developed by <a href="http://www.danilonavas.net" target="blank">Danilo Navas</a> and Daniel Silver.</p>
+    </div>
+    <div class="footer-wrap">
+        <div class="row">
+            <div class="large-12 columns"><br>
+                <ul class="left footer-links">
+                    <li><a href="">Home</a></li>
+                    <li><a href="">Adopt</a></li>
+                    <li><a href="">Volunteer</a></li>
+                    <li><a href="">Donate</a></li>
+                </ul>
+                <ul class="right social-icons">
+                    <li class="fa fa-inverse fa-lg fa-facebook"></li>
+                    <li class="fa fa-inverse fa-lg fa-youtube"></li>
+                    <li class="fa fa-inverse fa-lg fa-instagram"></li>
+                </ul>
+            </div>
+            <div class="large-12 columns">
+                <p class="copyright-credits">&copy 2015 All rights reserved. Developed by
+                    <a href="http://www.danilonavas.net" target="blank">Danilo Navas</a> and Daniel Silver.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -115,7 +131,7 @@
 	<!-- Foundation Responsive JS -->
     {{ HTML::script('admin/bower_components/foundation/js/foundation.min.js') }}
     <!-- Custom JS file for "master.blade.php" -->
-    {{ HTML::script('admin/js/admin-main.js') }}
+    {{ HTML::script('admin/js/admin-master.js') }}
     <!-- Allow views to load custom view specific scripts -->
     @yield('scripts')
 
