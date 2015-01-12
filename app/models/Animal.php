@@ -18,7 +18,7 @@ Class Animal extends Eloquent {
 		// Validation rules.
 		$rules = [
 			'shelter_code' 	=>'alpha_num|between:1,10|unique:animals',
-			'front_photo'	=>'integer',
+			'front_photo'	=>'alpha_num',
 			'dob'		 	=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
 			'date_in'	 	=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
 			'date_out'	 	=>'date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
@@ -32,6 +32,59 @@ Class Animal extends Eloquent {
 			'user_id'		=>'integer'
 		];
 		return Validator::make($input, $rules);
+	}
+
+	/************************* GETTERS AND SETTERS ***************************/
+	// Date of Birth
+	public function getdobAttribute($dob)
+	{
+		return date("m/d/Y", strtotime($dob));
+	}
+
+	public function setdobAttribute($dob)
+	{
+		$this->attributes['dob'] = date("Y-m-d", strtotime($dob));
+	}
+	// DATE IN
+	public function getDateInAttribute($date_in)
+	{
+		return date("m/d/Y", strtotime($date_in));
+	}
+
+	public function setDateInAttribute($date_in)
+	{
+		$this->attributes['date_in'] = date("Y-m-d", strtotime($date_in));
+	}
+	// DATE OUT
+	public function getDateOutAttribute($date_out)
+	{
+		return ( empty($date_out) ? NULL : date("m/d/Y", strtotime($date_out)) );
+	}
+
+	public function setDateOutAttribute($date_out)
+	{
+		$this->attributes['date_out'] = (  empty($date_out) ? NULL : date("Y-m-d", strtotime($date_out)) );
+	}
+	// Shelter Code
+	public function getShelterCodeAttribute($shelter_code)
+	{
+		return ucfirst($shelter_code);
+	}
+
+	public function setShelterCodeAttribute($shelter_code)
+	{
+		$this->attributes['shelter_code'] = ( empty($shelter_code) ? NULL : $shelter_code );
+	}
+
+	// Created_at and Updated_at
+	public function getCreatedAtAttribute($created_at)
+	{
+	    return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $created_at)->format('m/d/Y');
+	}
+
+	public function getUpdatedAtAttribute($updated_at)
+	{
+	    return Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $updated_at)->format('m/d/Y');
 	}
 
 	/************************* RELATIONSHIPS ***************************/

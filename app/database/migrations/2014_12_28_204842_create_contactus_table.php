@@ -21,7 +21,7 @@ class CreateContactusTable extends Migration {
 			$table->string('address');
 			$table->string('city');
 			$table->char('state', 2);
-			$table->integer('zip');
+			$table->string('zip', 10);
 			// Email addresses
 			$table->string('email_1');
 			$table->string('email_2')->nullable();

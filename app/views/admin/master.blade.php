@@ -31,8 +31,8 @@
     <!-- Top Nav Bar & Banner -->
     <div class="contain-to-grid">
         <div class="top-banner">
-            <h2 class="top-banner-text"><b>Animal Shelter</b></h2>
-            <h5 class="top-banner-text">Administrator</h5>
+            <h2 class="top-banner-text-1"><b>Animal Shelter</b></h2>
+            <h5 class="top-banner-text-2">Administrator</h5>
         </div>
         <nav class="top-bar" data-topbar role="navigation">
             <ul class="title-area">

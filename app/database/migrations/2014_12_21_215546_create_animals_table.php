@@ -15,7 +15,7 @@ class CreateAnimalsTable extends Migration {
 		Schema::create('animals', function(Blueprint $table)
 		{
 			$table->increments('id'); // Auto incrementing Primary Key.
-			$table->integer('front_photo')->unsigned()->nullable();
+			$table->string('profile_photo')->nullable();
 			$table->string('shelter_code')->unique()->nullable();
 			$table->date('date_in');
 			$table->date('date_out')->nullable();

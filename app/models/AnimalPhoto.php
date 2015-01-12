@@ -13,7 +13,7 @@ Class AnimalPhoto extends Eloquent {
 	public $timestamps = false;
 
 	// Specify which attributes are mass-assignable by user controlled input.
-	protected $fillable = array('image_path');
+	protected $fillable = array('image_path, animal_id');
 
 	// Validation function accessible from anywhere when validating inputs for this model.
 	public static function validate ($input)
@@ -29,7 +29,7 @@ Class AnimalPhoto extends Eloquent {
 	/************************* RELATIONSHIPS ***************************/
 
 	// One photo can only belong to one animal.
-	public function animals ()
+	public function animalPhoto ()
 	{
 		return $this->belongsTo('Animal'); // Has to match model name
 	}

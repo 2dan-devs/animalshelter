@@ -3,9 +3,11 @@
 // app/helpers/helpers.php
 
 ############## Helper Function for Flash Messages ###########
-class FlashMessage {
+
+class FlashMessage
+{
 	public static function DisplayAlert($message, $type)
 	{
-		return '<div class="alert-box radius ' .$type. '">' .$message. '</div>';
+		return '<div class="alert-box radius ' .$type. '">' .$message. '<a class="fa fa-large fa-times fa-inverse right" id="session-message-alert"></a></div>';
 	}
 }
