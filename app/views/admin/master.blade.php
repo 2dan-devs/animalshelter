@@ -11,7 +11,7 @@
     <!-- Normalize 3.0.2 CSS -->
     {{ HTML::style('admin/bower_components/foundation/css/normalize.css') }}
     <!-- Zurb Foundation 5.5.0 CSS -->
-    {{ HTML::style('admin/bower_components/foundation/css/foundation.css') }}
+    {{ HTML::style('admin/bower_components/foundation/css/foundation.min.css') }}
     <!-- Modernizr 2.8.3 JS -->
     {{ HTML::script('admin/bower_components/modernizr/modernizr.js') }}
     <!-- Font-Awesome 4.2.0 -->
@@ -111,6 +111,7 @@
                     <li class="fa fa-inverse fa-lg fa-facebook"></li>
                     <li class="fa fa-inverse fa-lg fa-youtube"></li>
                     <li class="fa fa-inverse fa-lg fa-instagram"></li>
+                    <li class="fa fa-inverse fa-lg fa-twitter"></li>
                 </ul>
             </div>
             <div class="large-12 columns">

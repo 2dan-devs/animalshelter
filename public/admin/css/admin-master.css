@@ -16,17 +16,17 @@ body {
 .top-banner {
 	text-align: center;
 	background-color: #474747;
+	height: 110px;
 }
 
 .top-banner-text-1 {
 	color: #F0F0F0;
 	padding-top: 14px;
-	margin-bottom: 0;
 }
 
 .top-banner-text-2 {
 	color: #F0F0F0;
-	padding-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 /* ************************** FOOTER ***************************/
@@ -46,7 +46,6 @@ body {
 	margin-right: 16px;
 }
 
-/* Elements */
 .footer-links {
 	list-style-type: none;
 	font-size: 12px;

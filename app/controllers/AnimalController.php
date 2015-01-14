@@ -49,9 +49,10 @@ class AnimalController extends \BaseController {
 		else
 		{
 			/******************************** Profile Photo Upload ***********************/
-			if ( Input::hasFile('profile_photo'))
+			$profile_photo = Input::file('profile_photo');
+
+			if ( $profile_photo )
 			{
-				$profile_photo = Input::file('profile_photo');
 				$filename = time()."-". $profile_photo->getClientOriginalName();
 				$path = public_path('admin/img/animal_photos/'. $filename);
 
@@ -83,6 +84,7 @@ class AnimalController extends \BaseController {
 			$anim->breed_id = Input::get('breed_id');
 			$anim->status_id = Input::get('status_id');
 			$anim->description = Input::get('description');
+			$anim->comments = Input::get('comments');
 			$anim->save();
 
 			/************************* Photo Set Upload **********************/
@@ -166,7 +168,110 @@ class AnimalController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+
+		$validator = Animal::validate(Input::all());
+
+		if ($validator->fails())
+		{
+			return Redirect::back()->withErrors($validator)->withInput();
+		}
+		else
+		{
+			/******************************** Profile Photo Upload ***********************/
+			$profile_photo = Input::file('profile_photo');
+
+			if ( $profile_photo )
+			{
+				$filename = time()."-". $profile_photo->getClientOriginalName();
+				$path = public_path('admin/img/animal_photos/'. $filename);
+
+				try
+				{
+					// Resize image to 600px width while keeping aspect ratio for height and
+					// avoiding upscaling.
+					Image::make($profile_photo->getRealPath())->resize(null, 600, function ($constraint) {
+											    					$constraint->aspectRatio();
+											    					$constraint->upsize();
+																})->save($path);
+				}
+				catch (Exception $e)
+				{
+					// If something goes wrong when saving image throw nice error to admin.
+					return Redirect::back()->with('message', FlashMessage::DisplayAlert('Invalid Image File. Please upload a different image.', 'warning'));
+				}
+			} else { $filename = NULL;}
+
+			/***** Create new animal object and store data from form into database. *****/
+			$anim = Animal::find($id);
+			$anim->shelter_code = Input::get('shelter_code');
+			$anim->profile_photo = ( $filename==NULL ? $anim->profile_photo : 'admin/img/animal_photos/' .$filename );
+			$anim->name = Input::get('name');
+			$anim->dob = Input::get('dob');
+			$anim->date_in = Input::get('date_in');
+			$anim->date_out = Input::get('date_out');
+			$anim->species_id = Input::get('species_id');
+			$anim->breed_id = Input::get('breed_id');
+			$anim->status_id = Input::get('status_id');
+			$anim->description = Input::get('description');
+			$anim->comments = Input::get('comments');
+			$anim->save();
+
+			/************************* Photo Set Upload **********************/
+			if ( Input::hasFile('photo_set') )
+			{
+				$photo_set = Input::file('photo_set');
+
+				foreach($photo_set as $one_photo)
+				{
+					$photo_name = time()."-". $one_photo->getClientOriginalName();
+					$loop_path = public_path('admin/img/animal_photos/'. $photo_name);
+
+					try
+					{
+						// Resize image to 600px width while keeping aspect ratio for height and
+						// avoiding upscaling.
+						Image::make($one_photo->getRealPath())->resize(null, 600, function ($constraint) {
+											    					$constraint->aspectRatio();
+											    					$constraint->upsize();
+																})->save($loop_path);
+					}
+					catch (Exception $e)
+					{
+						// If something goes wrong when saving image throw nice error to admin.
+						# TODO?: diplay which images failed and saved good ones.
+						return Redirect::back()->with(
+							'message', FlashMessage::DisplayAlert('Record Saved.<br>Warning: Some photos were not saved.</b>, invalid format.', 'warning'));
+					}
+
+					if (!empty($photo_name))
+					{
+						$set_photo = new AnimalPhoto;
+						$set_photo->image_path = 'admin/img/animal_photos/' .$photo_name;
+						$set_photo->animal_id = $anim->id;
+						$set_photo->save();
+					}
+				}
+			}
+
+			############## Delete Photos Checked by User ################
+			$deleteChecked = Input::get('deletePhoto');
+
+			if ( is_array($deleteChecked) )
+			{
+				foreach ($deleteChecked as $deleteme)
+				{
+					// Delete file in animal_photos folder associated with record.
+					$photo = AnimalPhoto::find($deleteme);
+					File::delete( public_path($photo->image_path) );
+
+					// Delete record on animals_photo table.
+					AnimalPhoto::destroy($deleteme);
+				}
+			}
+			############## End -Delete Photos Checked by User- ################
+
+			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Record Updated Successfully!', 'success'));
+		}
 	}
 
 	/**

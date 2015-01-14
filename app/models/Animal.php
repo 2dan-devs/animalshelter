@@ -76,6 +76,17 @@ Class Animal extends Eloquent {
 		$this->attributes['shelter_code'] = ( empty($shelter_code) ? NULL : $shelter_code );
 	}
 
+	// Comments
+	public function getCommentsAttribute($comments)
+	{
+		return ucfirst($comments);
+	}
+
+	public function setCommentsAttribute($comments)
+	{
+		$this->attributes['comments'] = ( empty($comments) ? NULL : $comments );
+	}
+
 	// Created_at and Updated_at
 	public function getCreatedAtAttribute($created_at)
 	{
@@ -110,7 +121,7 @@ Class Animal extends Eloquent {
 	// One animal can have many photos.
 	public function animalPhoto()
 	{
-		return $this->hasMany('AnimalPhoto'); // Has to match model name
+		return $this->hasMany('AnimalPhoto', 'animal_id'); // Has to match model name
 	}
 
 	// One animal can only be entered by one user.
