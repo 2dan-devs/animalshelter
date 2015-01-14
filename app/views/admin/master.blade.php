@@ -108,10 +108,10 @@
                     <li><a href="">Donate</a></li>
                 </ul>
                 <ul class="right social-icons">
-                    <li class="fa fa-inverse fa-lg fa-facebook"></li>
-                    <li class="fa fa-inverse fa-lg fa-youtube"></li>
-                    <li class="fa fa-inverse fa-lg fa-instagram"></li>
-                    <li class="fa fa-inverse fa-lg fa-twitter"></li>
+                    <li><a href="#" class="fa fa-inverse fa-lg fa-facebook"></a></li>
+                    <li><a href="#" class="fa fa-inverse fa-lg fa-youtube"></a></li>
+                    <li><a href="#" class="fa fa-inverse fa-lg fa-instagram"></a></li>
+                    <li><a href="#" class="fa fa-inverse fa-lg fa-twitter"></a></li>
                 </ul>
             </div>
             <div class="large-12 columns">
