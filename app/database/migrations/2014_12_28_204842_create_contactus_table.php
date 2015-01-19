@@ -20,14 +20,14 @@ class CreateContactusTable extends Migration {
 			// Address fields
 			$table->string('address');
 			$table->string('city');
-			$table->char('state', 2);
+			$table->string('state');
 			$table->string('zip', 10);
 			// Email addresses
-			$table->string('email_1');
-			$table->string('email_2')->nullable();
+			$table->string('email_1', 100);
+			$table->string('email_2', 100)->nullable();
 			// Phone numbers
-			$table->integer('phone_1');
-			$table->integer('phone_2')->nullable();
+			$table->string('phone_1', 13);
+			$table->string('phone_2', 13)->nullable();
 			$table->timestamps();
 		});
 	}

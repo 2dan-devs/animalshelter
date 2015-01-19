@@ -40,6 +40,26 @@
 	line-height: 6px;
 }
 
+.index-select-filter {
+	height: 30px;
+	padding: 0;
+}
+
+.filter-go-button {
+	height: 30px;
+	width: 70px;
+}
+
+.filter-text-column p {
+	padding-top: 2px;
+}
+
+.panel-filters-wrap {
+	padding-bottom: 0px;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
 /* Make Modal Delete Confirmation Background Cover Entire Screen. */
 .reveal-modal-bg {
 	/* For some reason, position: fixed, makes the background full screen

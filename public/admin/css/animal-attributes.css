@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.list-wrap {
+	height: 340px;
+	overflow: scroll;
+	padding: 0px;
+}
+
+.enter-new-section {
+	padding-top: 10px;
+}
+
+.list-panel {
+	padding: 2px;
+}
+
+.list-panel ul li {
+	font-size: 12px;
+	line-height: 28px;
+}
+
+.list-title-div {
+	text-align: center;
+	background-color: #D7D7D7;
+}
+
+.list-wrap input[type=submit] {
+    border-radius: 5px;
+    border: 0;
+    width: 60px;
+    height:25px;
+}
+
+.list-wrap ul {
+	list-style: none;
+}

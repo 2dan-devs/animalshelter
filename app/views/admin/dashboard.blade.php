@@ -9,51 +9,51 @@
 	<div class="row">
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="{{ URL::to('admin/dashboard/animal/create') }}">Add<br>Animal<br>Record</a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/animal/create') }}">Add<br>Animal<br>Record</a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="{{ URL::to('admin/dashboard/animal') }}">View / Edit<br>Animals</a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/animal') }}">View / Edit<br>All<br>Records</a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="#">Edit<br>Newsletters<br>Subscribers</a>
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="large-4 medium-4 columns">
-			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="#">Species<br>Breeds<br>Status</a>
-			</div>
-		</div>
-		<div class="large-4 medium-4 columns">
-			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="#">Edit<br>Contact Us<br>About Us</a>
-			</div>
-		</div>
-		<div class="large-4 medium-4 columns">
-			<div class="panel dash-panel">
-				<a class="dash-button button large radius" href="#">Edit<br>Events</a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/attributes') }}">Species<br>Breeds<br>Status</a>
 			</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#"></a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/contactus') }}">Edit<br>Contact Us<br>Information</a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#"></a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/aboutus') }}">Edit<br>About Us<br>Information</a>
 			</div>
 		</div>
 		<div class="large-4 medium-4 columns">
 			<div class="panel dash-panel">
-				<a class="dash-button button large radius secondary disabled" href="#"></a>
+				<a class="dash-button button large" href="{{ URL::to('admin/dashboard/events') }}">Edit<br>Shelter<br>Events</a>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="large-4 medium-4 columns">
+			<div class="panel dash-panel">
+				<a class="dash-button button large" href="#">Edit<br>Newsletters<br>Subscribers</a>
+			</div>
+		</div>
+		<div class="large-4 medium-4 columns">
+			<div class="panel dash-panel">
+				<a class="dash-button button large secondary disabled" href="#"></a>
+			</div>
+		</div>
+		<div class="large-4 medium-4 columns">
+			<div class="panel dash-panel">
+				<a class="dash-button button large secondary disabled" href="#"></a>
 			</div>
 		</div>
 	</div>

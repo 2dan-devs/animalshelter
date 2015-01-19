@@ -86,7 +86,7 @@
 				</label>
 			</div>
 			<div class="medium-6 large-6 columns">
-				<label>Comments (For Internal Use Only):
+				<label>Administrator Comments (For Internal Use Only):
 					<textarea class="create-record-description error" name="comments" placeholder="Enter Comments">{{ Input::old('comments') }}</textarea>
 					@if ($errors->has('comments')) <small class="error input-error-label">{{ $errors->first('comments') }}</small> @endif
 				</label>

@@ -17,9 +17,18 @@ class CreateShelterEventsTable extends Migration {
 			// Table columns.
 			$table->increments('id'); // Auto incrementing Primary Key.
 			$table->string('title');
-			$table->date('event_date');
-			$table->string('body');
 
+			// Address fields
+			$table->string('location');
+			$table->string('address');
+			$table->string('city');
+			$table->string('state');
+			$table->string('zip', 10);
+
+			$table->date('start_date');
+			$table->date('end_date');
+			$table->string('body');
+			$table->boolean('active')->default(1);
 			$table->timestamps();
 		});
 	}

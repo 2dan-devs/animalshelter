@@ -9,9 +9,42 @@ class AnimalController extends \BaseController {
 	 */
 	public function index()
 	{
-		$allAnimals = Animal::paginate(12);
+		// Get all data from species table populate select list on view.
+		$species = Species::all();
+		// Get all breeds
+		$breeds = Breed::where('species_id', '=', 1)->orderBy('name')->get();
+		// Get all data from status table to populate select list on view.
+		$statuses = Status::all();
 
-		return View::make('admin.animal.index', ['allAnimals'=>$allAnimals])
+		#################### Filter Data as Requested by User or Return All ######################
+		$allAnimals = new Animal;
+
+		if( !empty(Input::get('species_id')) )
+		    $allAnimals = $allAnimals->where('species_id', '=', Input::get('species_id'));
+
+		if( !empty(Input::get('breed_id')) )
+		    $allAnimals = $allAnimals->where('breed_id', '=', Input::get('breed_id'));
+
+		if( !empty(Input::get('status_id')) )
+		    $allAnimals = $allAnimals->where('status_id', '=', Input::get('status_id'));
+
+		$allAnimals = $allAnimals->paginate(12);
+
+		#################### End Filter Data as Requested by User or Return All ######################
+
+		/* ************ If Search functionality is needed. **********
+		public function search() {
+		    $q = Input::get('myInputField');
+		    $searchTerms = explode(' ', $q);
+		    $query = DB::table('products');
+		    foreach($searchTerms as $term) {
+		        $query->where('name', 'LIKE', '%'. $term .'%');
+		    }
+		    $results = $query->get();
+		}
+		*************************************************************/
+
+		return View::make('admin.animal.index', ['species'=>$species, 'statuses'=>$statuses, 'breeds'=>$breeds, 'allAnimals'=>$allAnimals])
 				->with('title', 'View / Edit Animals');
 	}
 

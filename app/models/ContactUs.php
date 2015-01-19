@@ -17,15 +17,15 @@ Class ContactUs extends Eloquent {
 	{
 		// Validation rules.
 		$rules = array(
-			'title'	 =>'required|alpha_num|between:5,30',
-			'address'=>'required|regex:/^\d{1,5}\s[A-Za-z.]+\s[A-Za-z.]{2,7}$/|min:2',
+			'title'	 =>'required|between:5,30|regex:/^[\pL\s]+$/',
+			'address'=>'required|regex:/^\d{1,5}\s[A-Za-z.]+\s[A-Za-z.]{2,7}$/',
 	        'city'	 =>'required|alpha|min:2',
-	        'state'	 =>'required|alpha|between:2,2',
-	        'zip'	 =>'required|integer|regex:/^[0-9]{5}$/',
+	        'state'	 =>'required|regex:/^[A-Za-z0-9 ]+$/|between:2,30',
+	        'zip'	 =>'required|regex:/^[0-9]{5}$/',
 			'email_1'=>'required|between:3,64|email',
 			'email_2'=>'between:3,64|email',
-			'phone_1'=>'required|numeric|regex:/^\(?[0-9]{3}\)?-?[0-9]{3}[-. ]?[0-9]{4}$/',
-			'phone_2'=>'numeric|regex:/^\(?[0-9]{3}\)?-?[0-9]{3}[-. ]?[0-9]{4}$/'
+			'phone_1'=>'required|regex:/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/',
+			'phone_2'=>'regex:/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/'
 		);
 		return Validator::make($input, $rules);
 	}

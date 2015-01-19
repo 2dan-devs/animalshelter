@@ -5,8 +5,11 @@
 .row .large-4 .panel .dash-button {
 	width: 100%;
 	height: 100%;
+	line-height: 30px;
+	;
 }
 
 .row .large-4 .dash-panel {
 	height: 150px;
+	padding: 6px;
 }

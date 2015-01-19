@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder {
 		// Seed data onto the 'users' table.
 		$this->call('UserTableSeeder');
 
+		// Seed data onto the 'aboutus' table.
+		$this->call('AboutUsTableSeeder');
+
+		// Seed data onto the 'contactus' table.
+		$this->call('ContactUsTableSeeder');
+
 		// Show successful message if no errors.
 		$this->command->info('All Seeders Completed Successfully!');
 	}

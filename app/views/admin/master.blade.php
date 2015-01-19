@@ -48,10 +48,11 @@
                     <ul class="dropdown">
                       <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
                       <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal') }}">View / Edit Animals</a></li>
-                      <li class="top-bar-menu-item"><a href="#">Edit Newsletters Subscribers</a></li>
-                      <li class="top-bar-menu-item"><a href="#">Edit Species Breeds Status</a></li>
-                      <li class="top-bar-menu-item"><a href="#">Edit ContactUs AboutUs</a></li>
-                      <li class="top-bar-menu-item"><a href="#">Edit Events</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/attributes') }}">Species / Breeds / Status</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/aboutus') }}">Edit About Us</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/contactus') }}">Edit Contact Us</a></li>
+                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/events') }}">Shelter Events</a></li>
+                      <li class="top-bar-menu-item"><a href="#">Newsletters / Subscribers</a></li>
                     </ul>
                   </li>
                   <li class="divider"></li>
@@ -82,6 +83,7 @@
         @if($errors->has())
         <div class="large-12 columns">
             <div class="alert-box alert val-top-box-errors">
+            <a class="fa fa-large fa-times fa-inverse right" id="session-message-alert"></a>
                 <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>

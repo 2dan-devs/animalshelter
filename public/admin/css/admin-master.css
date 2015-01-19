@@ -10,6 +10,10 @@
 	font-size: 13px;
 }
 
+.val-top-box-errors {
+	padding-bottom: 0px;
+}
+
 body {
 	background-color: #EAEAEA;
 }
@@ -31,7 +35,7 @@ body {
 
 /* ************************** FOOTER ***************************/
 .footer-wrap {
-	height: 120px;
+	height: 130px;
 	width: 100%;
 	background-color: #474747;
 }

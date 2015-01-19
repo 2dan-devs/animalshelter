@@ -17,7 +17,7 @@ class CreateAboutusTable extends Migration {
 			// Table columns.
 			$table->increments('id'); // Auto incrementing Primary Key.
 			$table->string('title');
-			$table->string('body');
+			$table->text('body');
 			$table->timestamps();
 		});
 	}

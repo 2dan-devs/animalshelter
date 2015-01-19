@@ -13,12 +13,12 @@ Class AboutUs extends Eloquent {
 	protected $fillable = array('title', 'body');
 
 	// Validation function accessible from anywhere when validating inputs for this model.
-	public function validate ($input)
+	public static function validate ($input)
 	{
 		// Validation rules.
 		$rules = array(
-			'title'	=>'required|alphanum|between:5,30',
-			'body'	=>'required|alphanum|between:10,500'
+			'title'	=>'required|between:5,40',
+			'body'	=>'required|between:10,2000'
 		);
 		return Validator::make($input, $rules);
 	}
