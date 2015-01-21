@@ -70,7 +70,7 @@
     <!-- Main Content -->
     <div class="row">
         <div class="large-12 columns view-title">
-
+            <br>
             <!-- Title from View -->
             <h3><b>{{$title}}</b></h3>
             <br>

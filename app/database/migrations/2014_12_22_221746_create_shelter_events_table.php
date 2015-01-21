@@ -24,6 +24,7 @@ class CreateShelterEventsTable extends Migration {
 			$table->string('city');
 			$table->string('state');
 			$table->string('zip', 10);
+			$table->string('phone', 13);
 
 			$table->date('start_date');
 			$table->date('end_date');

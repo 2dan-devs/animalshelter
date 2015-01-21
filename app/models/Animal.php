@@ -17,7 +17,7 @@ Class Animal extends Eloquent {
 	{
 		// Validation rules.
 		$rules = [
-			'shelter_code' 	=>'alpha_num|between:1,10|unique:animals',
+			'shelter_code' 	=>'alpha_num|between:1,10',
 			'front_photo'	=>'alpha_num',
 			'dob'		 	=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
 			'date_in'	 	=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
@@ -76,7 +76,7 @@ Class Animal extends Eloquent {
 		$this->attributes['shelter_code'] = ( empty($shelter_code) ? NULL : $shelter_code );
 	}
 
-	// Comments
+	// Administrator Comments.
 	public function getCommentsAttribute($comments)
 	{
 		return ucfirst($comments);

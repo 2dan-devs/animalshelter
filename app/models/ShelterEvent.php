@@ -10,7 +10,7 @@ Class ShelterEvent extends Eloquent {
 	protected $table = 'shelter_events';
 
 	// Specify which attributes are mass-assignable by user controlled input.
-	protected $fillable = ['title', 'start_date', 'end_date', 'body'];
+	protected $fillable = ['title', 'localtion', 'address', 'city', 'state', 'zip', 'phone', 'start_date', 'end_date', 'body', 'active'];
 
 	// Validation function accessible from anywhere when validating inputs for this model.
 	public static function validate ($input)
@@ -35,6 +35,7 @@ Class ShelterEvent extends Eloquent {
 		return Validator::make($input, $rules);
 	}
 
+	/********************************** GETTERS AND SETTERS ***************************************/
 	// Start Date
 	public function getStartDateAttribute($start_date)
 	{
@@ -46,13 +47,13 @@ Class ShelterEvent extends Eloquent {
 		$this->attributes['start_date'] = date("Y-m-d", strtotime($start_date));
 	}
 	// End Date
-	public function getEndDatetAttribute($end_date)
+	public function getEndDateAttribute($end_date)
 	{
-		return ( empty($end_date) ? NULL : date("m/d/Y", strtotime($end_date)) );
+		return date("m/d/Y", strtotime($end_date));
 	}
 
 	public function setEndDateAttribute($end_date)
 	{
-		$this->attributes['end_date'] = (  empty($end_date) ? NULL : date("Y-m-d", strtotime($end_date)) );
+		$this->attributes['end_date'] = date("Y-m-d", strtotime($end_date));
 	}
 }

@@ -105,7 +105,7 @@
 		</div>
 		<div class="row">
 			<div class="medium-12 large-12 columns">
-				<a href="{{ URL::previous() }}"><br><i class="fa fa-chevron-circle-left fa-lg"> Back</i></a>
+				<a href="{{ URL::to('admin/dashboard/animal') }}"><br><i class="fa fa-chevron-circle-left fa-lg"> View All</i></a>
 				{{ Form::submit('Update Record', ['class'=>'button small right']) }}
 			</div>
 		</div>

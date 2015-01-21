@@ -9,9 +9,10 @@ class EventsController extends \BaseController {
 	 */
 	public function index()
 	{
-		return View::make('admin.events.index')->with('title', 'Shelter Events');
-	}
+		$events = ShelterEvent::paginate(10);
 
+		return View::make('admin.events.index', ['events'=>$events])->with('title', 'Shelter Events');
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -22,7 +23,6 @@ class EventsController extends \BaseController {
 	{
 		return View::make('admin.events.create')->with('title', 'Create Event');
 	}
-
 
 	/**
 	 * Store a newly created resource in storage.
@@ -58,7 +58,6 @@ class EventsController extends \BaseController {
 				->with('message', FlashMessage::DisplayAlert('Event created successfully!', 'success'));
 	}
 
-
 	/**
 	 * Display the specified resource.
 	 *
@@ -70,7 +69,6 @@ class EventsController extends \BaseController {
 		//
 	}
 
-
 	/**
 	 * Show the form for editing the specified resource.
 	 *
@@ -79,9 +77,11 @@ class EventsController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
-	}
+		$event = ShelterEvent::find($id);
 
+		return View::make('admin.events.edit', ['event'=>$event])
+					->with('title', 'Edit Event');
+	}
 
 	/**
 	 * Update the specified resource in storage.
@@ -91,9 +91,32 @@ class EventsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
-	}
+		$input = Input::all();
 
+		$val = ShelterEvent::validate($input);
+
+		if ( $val->fails() )
+		{
+			return Redirect::back()->withErrors($val)->withInput();
+		}
+
+		$event = ShelterEvent::find($id);
+		$event->title = Input::get('title');
+		$event->start_date = Input::get('start_date');
+		$event->end_date = Input::get('end_date');
+
+		$event->location = Input::get('location');
+		$event->address = Input::get('address');
+		$event->city = Input::get('city');
+		$event->state = Input::get('state');
+		$event->zip = Input::get('zip');
+
+		$event->body = Input::get('body');
+		$event->save();
+
+		return Redirect::back()
+				->with('message', FlashMessage::DisplayAlert('Event Updated successfully!', 'success'));
+	}
 
 	/**
 	 * Remove the specified resource from storage.
@@ -103,8 +126,15 @@ class EventsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
-	}
+		$event = ShelterEvent::find($id);
 
+		if ( $event )
+		{
+			$event->delete();
+
+			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Event deleted successfully!', 'success'));
+		}
+
+	}
 
 }

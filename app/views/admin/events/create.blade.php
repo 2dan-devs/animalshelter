@@ -29,41 +29,47 @@
 		</div>
 	</div>
 	<!-- ROW: start date, end date. -->
-	<div class="row">
-		<div class="medium-6 large-6 columns">
-			<label>Event Location:
-				<input name="location" type="text" class="error" placeholder="Enter location" value="{{ Input::old('location') }}" required>
-				@if ($errors->has('location')) <small class="error input-error-label">{{ $errors->first('location') }}</small> @endif
-			</label>
+	<div class="panel">
+		<div class="row">
+			<div class="medium-6 large-6 columns">
+				<label>Location Name:
+					<input name="location" type="text" class="error" placeholder="Enter location" value="{{ Input::old('location') }}" required>
+					@if ($errors->has('location')) <small class="error input-error-label">{{ $errors->first('location') }}</small> @endif
+				</label>
+			</div>
+			<div class="medium-6 large-6 columns">
+				<label>Stree Address:
+					<input name="address" type="text" class="error" placeholder="Enter street address" value="{{ Input::old('address') }}" required>
+					@if ($errors->has('address')) <small class="error input-error-label">{{ $errors->first('address') }}</small> @endif
+				</label>
+			</div>
 		</div>
-		<div class="medium-6 large-6 columns">
-			<label>Call for More Info:
-				<input type="text" name="phone" id="" class="error" placeholder="Enter phone number" value="{{ Input::old('phone') }}" required>
-				@if ($errors->has('phone')) <small class="error input-error-label">{{ $errors->first('phone') }}</small> @endif
-			</label>
-			<p></p>
-		</div>
-	</div>
-	<!-- ROW: address zip state city -->
-	<div class="row">
-		<div class="medium-4 large-4 columns">
-			<label>City:
-				<input name="city" type="text" class="error" placeholder="Enter city" value="{{ Input::old('city') }}" required>
-				@if ($errors->has('city')) <small class="error input-error-label">{{ $errors->first('city') }}</small> @endif
-			</label>
-		</div>
-		<div class="medium-4 large-4 columns">
-			<label>State:
-				<input type="text" name="state" id="" class="error" placeholder="Enter state" value="{{ Input::old('state') }}" required>
-				@if ($errors->has('state')) <small class="error input-error-label">{{ $errors->first('state') }}</small> @endif
-			</label>
-		</div>
-		<div class="medium-4 large-4 columns">
-			<label>Zip:
-				<input type="text" name="zip" id="" class="error" placeholder="Enter zip code" value="{{ Input::old('zip') }}" required>
-				@if ($errors->has('zip')) <small class="error input-error-label">{{ $errors->first('zip') }}</small> @endif
-			</label>
-			<p></p>
+		<!-- ROW: address zip state city -->
+		<div class="row">
+			<div class="medium-3 large-3 columns">
+				<label>City:
+					<input name="city" type="text" class="error" placeholder="Enter city" value="{{ Input::old('city') }}" required>
+					@if ($errors->has('city')) <small class="error input-error-label">{{ $errors->first('city') }}</small> @endif
+				</label>
+			</div>
+			<div class="medium-3 large-3 columns">
+				<label>State:
+					<input type="text" name="state" id="" class="error" placeholder="Enter state" value="{{ Input::old('state') }}" required>
+					@if ($errors->has('state')) <small class="error input-error-label">{{ $errors->first('state') }}</small> @endif
+				</label>
+			</div>
+			<div class="medium-3 large-3 columns">
+				<label>Zip:
+					<input type="text" name="zip" id="" class="error" placeholder="Enter zip code" value="{{ Input::old('zip') }}" required>
+					@if ($errors->has('zip')) <small class="error input-error-label">{{ $errors->first('zip') }}</small> @endif
+				</label>
+			</div>
+			<div class="medium-3 large-3 columns">
+				<label>Call for More Info:
+					<input type="text" name="phone" id="" class="error" placeholder="Enter phone number" value="{{ Input::old('phone') }}" required>
+					@if ($errors->has('phone')) <small class="error input-error-label">{{ $errors->first('phone') }}</small> @endif
+				</label>
+			</div>
 		</div>
 	</div>
 	<!-- ROW: event description -->
