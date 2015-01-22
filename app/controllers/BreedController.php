@@ -22,7 +22,7 @@ class BreedController extends \BaseController {
 		{
 			$b = new Breed;
 			$b->name = Input::get('name');
-			$b->species_id = Input::get('specie_id');
+			$b->species_id = Input::get('species_id');
 			$b->save();
 
 		} catch (Exception $e) {

@@ -89,7 +89,7 @@
 				<div class="row collapse enter-new-section">
 					{{ Form::open(['action'=>'BreedController@store', 'method'=>'POST']) }}
 						<div class="large-12 columns">
-							<select name="specie_id">
+							<select name="species_id">
 								@foreach ($species as $specie)
 								<option value="{{ $specie->id }}">{{ $specie->name }}</option>
 								@endforeach
