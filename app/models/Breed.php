@@ -20,7 +20,7 @@ Class Breed extends Eloquent {
 	{
 		// Validation rules.
 		$rules = array(
-			'name' => 'required|alpha|between:3,20|unique:cat_breeds',
+			'name' => 'required|alpha|between:3,20|unique:breeds',
 			'species_id' =>'required|integer'
 		);
 		return Validator::make($input, $rules);

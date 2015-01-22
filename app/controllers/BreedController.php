@@ -9,37 +9,29 @@ class BreedController extends \BaseController {
 	 */
 	public function store()
 	{
-		$catbreed = Input::get('newcatbreed');
-		$dogbreed = Input::get('newdogbreed');
+		$breed = Input::all();
 
-		if ( !empty($catbreed) )
+		$val = Breed::validate($breed);
+
+		if ( $val->fails() )
 		{
-			try
-			{
-				$b = new Breed;
-				$b->name = $catbreed;
-				$b->species_id = 1;
-				$b->save();
-
-			} catch (Exception $e) {
-				return Redirect::back()->with('message', FlashMessage::DisplayAlert('Cannot Save Cat Breed. Already Exists.', 'alert'));
-			}
-
-			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Cat Breed Created Successfully!', 'success'));
+			return Redirect::back()->withErrors($val);
 		}
 
-		// IF entry came from Dog Breeds, store in database after validating field.
-		if ( !empty($dogbreed) )
+		try
 		{
 			$b = new Breed;
-			$b->name = $dogbreed;
-			$b->species_id = 2;
+			$b->name = Input::get('name');
+			$b->species_id = Input::get('specie_id');
 			$b->save();
 
-			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Dog Breed Created Successfully!', 'success'));
+		} catch (Exception $e) {
+			return Redirect::back()->with('message',
+				FlashMessage::DisplayAlert('Cannot Save Cat Breed. Already Exists.', 'alert'));
 		}
 
-		return Redirect::back()->with('message', FlashMessage::DisplayAlert('Please enter a valid breed name.', 'alert'));
+		return Redirect::back()->with('message',
+			FlashMessage::DisplayAlert('Breed created succesfully!.', 'success'));
 	}
 
 	/**
@@ -59,12 +51,15 @@ class BreedController extends \BaseController {
 				$breed->delete();
 			} catch (Exception $e) {
 				// If breed to be deleted is in use, send nice error back to admin.
-				return Redirect::back()->with('message', FlashMessage::DisplayAlert('Breed can NOT be deleted because it\'s in use.', 'alert'));
+				return Redirect::back()->with('message',
+					FlashMessage::DisplayAlert('Breed can NOT be deleted because it\'s in use.', 'alert'));
 			}
 
-			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Breed Deleted Successfully!', 'success'));
+			return Redirect::back()->with('message',
+				FlashMessage::DisplayAlert('Breed Deleted Successfully!', 'success'));
 		}
 
-		return Redirect::back()->with('message', FlashMessage::DisplayAlert('Record Not Found.', 'alert'));
+		return Redirect::back()->with('message',
+			FlashMessage::DisplayAlert('Record Not Found.', 'alert'));
 	}
 }

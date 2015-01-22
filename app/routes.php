@@ -23,7 +23,7 @@ Route::group(array('prefix' => '/admin'), function()
 		return View::make('admin.dashboard')->with('title', 'Dashboard');
 	});
 
-	// Resource of Routes for Animal model for CRUD operations. Routes: index, create, store, show, edit, update, destroy.
+	// Routes: index, create, store, show, edit, update, destroy.
 	Route::resource('dashboard/animal', 'AnimalController');
 
 	// // Route to create, view, and destroy statuses, species, and breeds.
@@ -32,13 +32,12 @@ Route::group(array('prefix' => '/admin'), function()
 		// Get all species from database species table.
 		$species = Species::all();
 		// Get all Cat breeds from database breeds table.
-		$allcats = Breed::where('species_id', '=', 1)->get();
-		// Get all Cat breeds from database breeds table.
-		$alldogs = Breed::where('species_id', '=', 2)->get();
+		$breeds = Breed::all();
 		// Get all data from status table on database.
 		$statuses = Status::all();
 
-		return View::make('admin.animal.attributes', ['species'=>$species, 'allcats'=>$allcats,'alldogs'=>$alldogs, 'statuses'=>$statuses])
+		return View::make('admin.animal.attributes',
+							['species'=>$species, 'breeds'=>$breeds, 'statuses'=>$statuses])
 				->with('title', 'Status / Species / Breeds');
 	});
 

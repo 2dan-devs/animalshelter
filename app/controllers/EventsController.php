@@ -132,7 +132,8 @@ class EventsController extends \BaseController {
 		{
 			$event->delete();
 
-			return Redirect::back()->with('message', FlashMessage::DisplayAlert('Event deleted successfully!', 'success'));
+			return Redirect::back()->with('message',
+				FlashMessage::DisplayAlert('Event deleted successfully!', 'success'));
 		}
 
 	}
