@@ -18,7 +18,7 @@
 								'onsubmit' => 'return confirm("Are you sure to delete this Status?")']) }}
 
 							<li>{{ $status->name }}
-									{{ Form::submit('Remove', array('type' => 'submit', 'class' => 'label secondary')) }}
+								{{ Form::submit('Remove', array('type'=>'submit', 'class'=>'label secondary')) }}
 							</li>
 
 							{{ Form::close() }}
@@ -49,7 +49,7 @@
 								'onsubmit' => 'return confirm("Are you sure to delete this Species?")']) }}
 
 							<li>{{ $specie->name }}
-									{{ Form::submit('Remove', array('type' => 'submit', 'class' => 'label secondary')) }}
+								{{ Form::submit('Remove', array('type'=>'submit', 'class'=>'label secondary')) }}
 							</li>
 
 							{{ Form::close() }}
@@ -75,11 +75,11 @@
 					<ul class="square">
 						@foreach ($breeds as $breed)
 							<!-- Open Form to Delete -->
-							{{Form::open(['route' => ['admin.dashboard.breed.destroy', $breed->id], 'method' => 'DELETE',
-							'onsubmit' => 'return confirm("Are you sure to delete this Breed?")']) }}
+							{{Form::open(['route' => ['admin.dashboard.breed.destroy', $breed->id], 'method' =>
+							'DELETE', 'onsubmit' => 'return confirm("Are you sure to delete this Breed?")']) }}
 
 							<li>{{ $breed->name }}
-								{{ Form::submit('Remove', array('type' => 'submit', 'class' => 'label secondary')) }}
+								{{Form::submit('Remove', array('type'=>'submit','class' => 'label secondary'))}}
 							</li>
 
 							{{ Form::close() }}

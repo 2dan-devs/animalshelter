@@ -27,7 +27,7 @@ class BreedController extends \BaseController {
 
 		} catch (Exception $e) {
 			return Redirect::back()->with('message',
-				FlashMessage::DisplayAlert('Cannot Save Cat Breed. Already Exists.', 'alert'));
+				FlashMessage::DisplayAlert('Cannot Save Breed. Already Exists!', 'alert'));
 		}
 
 		return Redirect::back()->with('message',
