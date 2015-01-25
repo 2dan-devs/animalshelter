@@ -27,46 +27,12 @@
 	<!--[if lt IE 10]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    <!-- Grab current user from session -->
-      <?php
-        $username = Session::get('current_user');
-      ?>
+
     <!-- Top Nav Bar & Banner -->
     <div class="contain-to-grid">
         <div class="top-banner">
             <h2 class="top-banner-text-1"><b>Animal Shelter</b></h2>
-            <h5 class="top-banner-text-2">Administrator</h5>
         </div>
-        <nav class="top-bar" data-topbar role="navigation">
-            <ul class="title-area">
-                <li class="name"><h1><a href="#">Logged In: {{ $username }}</a></h1></li>
-                <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
-                <li class="toggle-topbar menu-icon"><a href="#"><span>More</span></a></li>
-            </ul>
-            <section class="top-bar-section">
-                <!-- Right Nav Section -->
-                <ul class="right">
-                  <li class="has-dropdown">
-                    <a href="#">Actions</a>
-                    <ul class="dropdown">
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal/create') }}">Add Record</a></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/animal') }}">View / Edit Animals</a></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/attributes') }}">Species / Breeds / Status</a></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/aboutus') }}">Edit About Us</a></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/contactus') }}">Edit Contact Us</a></li>
-                      <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard/events') }}">Shelter Events</a></li>
-                      <li class="top-bar-menu-item"><a href="#">Newsletters / Subscribers</a></li>
-                    </ul>
-                  </li>
-                  <li class="divider"></li>
-                  <li class="top-bar-menu-item"><a href="{{ URL::to('admin/dashboard') }}">Dashboard</a></li>
-                  <li class="divider"></li>
-                  <li class="top-bar-menu-item"><a href="{{ URL::to('admin/profile') }}">Profile</a></li>
-                  <li class="divider"></li>
-                  <li class="top-bar-menu-item"><a href="{{ URL::to('/logout') }}"> Log Out </a></li>
-                </ul>
-            </section>
-        </nav>
     </div><br>
     <!-- End Top Nav Bar & Banner -->
 
@@ -98,11 +64,24 @@
         <!-- End show validation errors -->
 
         <!-- Main Content -->
-        <div class="large-12 columns">
-            @yield('content')
+        <div class="medium-4 large-4 columns">
+        	<p></p>
         </div>
+        <div class="medium-4 large-4 columns">
+        {{ Form::open(array('action' => 'UserController@loginPost')) }}
+            <label>Username:
+            	<input type="text" name="username">
+            </label>
+            <label>Password:
+            	<input type="password" name="password">
+            </label>
+				{{ Form::submit('Login', ['class'=>'button tiny radius right']) }}
+				<br><br>
+        {{ Form::close() }}
+        </div>
+        <div class="medium-4 large-4 columns"></div>
         <!-- End Main Content -->
-    </div>
+    </div><br><br>
     <div class="footer-wrap">
         <div class="row">
             <div class="large-12 columns"><br>

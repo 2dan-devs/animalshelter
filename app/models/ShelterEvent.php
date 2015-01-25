@@ -22,14 +22,14 @@ Class ShelterEvent extends Eloquent {
 			'location'	=>'required|between:5,30',
 			'address'	=>'required|regex:/^\d{1,5}\s[A-Za-z.]+\s[A-Za-z.]{2,7}$/',
 	        'city'	 	=>'required|alpha|min:2',
-	        'state'	 	=>'required|regex:/^[A-Za-z0-9 ]+$/|between:2,30',
+	        'state'	=>'required|regex:/^[A-Za-z0-9 ]+$/|between:2,30',
 	        'zip'	 	=>'required|regex:/^[0-9]{5}$/',
-	        'phone'		=>'required|regex:/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/',
+	        'phone'	=>'required|regex:/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/',
 
 			'start_date'=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
 			'end_date'	=>'required|date_format:m/d/Y|regex:/^[0-9]{2}\/[0-9]{2}\/20[0-9]{2}$/',
 			'body'		=>'required|between:10,1000',
-			'active'	=>'boolean'
+			'active'		=>'boolean'
 		];
 
 		return Validator::make($input, $rules);

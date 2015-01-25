@@ -74,12 +74,20 @@
 	</div>
 	<!-- ROW: event description -->
 	<div class="row">
-		<div class="medium-12 large-12 columns">
+		<div class="medium-8 large-8 columns">
 			<label>Event Description:
 				<textarea name="body" id="" class="error textarea-description" placeholder="Enter event details" required>{{ $event->body }}</textarea>
 				@if ($errors->has('body')) <small class="error input-error-label">{{ $errors->first('body') }}</small> @endif
 			</label>
 			<p></p>
+		</div>
+		<div class="medium-4 large-4 columns">
+			<label>Status:
+				<select name="active">
+					<option value="1" @if ($event->active==1){{'selected'}}@endif>Enabled</option>
+					<option value="0" @if ($event->active==0){{'selected'}}@endif>Disabled</option>
+				</select>
+			</label>
 		</div>
 	</div>
 	<!-- ROW: navigation -->
@@ -88,7 +96,7 @@
 			<a href="{{ URL::to('admin/dashboard/events') }}"><br><i class="fa fa-chevron-circle-left fa-lg"> View All</i></a>
 			{{ Form::submit('Update', ['class'=>'button small right']) }}
 		</div>
-	</div>
+	</div><br>
 	{{ Form::close() }}
 @stop
 

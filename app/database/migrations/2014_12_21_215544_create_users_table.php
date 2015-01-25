@@ -17,16 +17,16 @@ class CreateUsersTable extends Migration {
 			// Table columns
 			$table->increments('id'); // Auto incrementing Primary Key.
 
-			// NOT nullable table columns 
-			$table->string('username')->unique();
-			$table->string('password');
-			$table->string('email')->unique();
+			// NOT nullable table columns
+			$table->string('username', 32)->unique();
+			$table->string('password', 64);
+			$table->string('email', 320);
 
 			// Nullable table columns
 			$table->string('reset_link')->nullable();
 
 			// Required to use Laravel's Authentication System.
-			$table->string('remember_token');
+			$table->string('remember_token')->nullable();
 
 			// creates created_at and updated_at columns on table.
 			$table->timestamps();

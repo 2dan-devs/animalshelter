@@ -6,17 +6,29 @@ Route::get('/', function()
 	return View::make('index');
 });
 
+/* ------------------------  End User Routes --------------------------------- */
+// route to show the login form
+Route::get('login', ['uses'=>'UserController@loginForm']);
+// route to process the form
+Route::post('login', ['uses'=>'UserController@loginPost']);
+//Route to forgotten password form
+Route::get('forgotpassword', function()
+{
+   return View::make('user.forgotpassword')
+      ->with('title', 'Get Password');
+});
+// Log out user
+Route::get('logout', function()
+{
+    Auth::logout();
+    return Redirect::to('login')->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
+});
+/* ------------------------  End User Routes --------------------------------- */
 
 /* --------------------------- ADMIN PREFIXED ROUTES ---------------------------- */
 
-Route::group(array('prefix' => '/admin'), function()
+Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 {
-	// Display view in /app/views/admin/login.blade.php
-	Route::get('login', function()
-	{
-		return View::make('login');
-	});
-
 	// Display dashboard view in /app/views/admin/dashboard.blade.php
 	Route::get('dashboard', function()
 	{
@@ -49,11 +61,21 @@ Route::group(array('prefix' => '/admin'), function()
 	Route::resource('dashboard/species', 'SpeciesController');
 	// Resouce to create and destroy statuses
 	Route::resource('dashboard/breed', 'BreedController');
-
 	// Resouce to view and update About Us information.
 	Route::resource('dashboard/aboutus', 'AboutUsController');
 	// Resouce to view and update Contact Us information.
 	Route::resource('dashboard/contactus', 'ContactUsController');
+
+	// Update User Information section *******************************************************
+	Route::get('profile', function()
+	{
+		$username = Auth::user()->username;
+		$user = User::find(Auth::user()->id);
+
+		return View::make('user.profile', ['username'=>$username, 'user'=>$user])->withTitle('Edit User Profile');
+	});
+	Route::post('profile/update/{id}', ['uses'=>'UserController@updateProfile']);
+	// Update User Information section *******************************************************
 
 	// API for jQuery to display breeds based on specie selected.
 	Route::get('breed-based-on-specie', function()

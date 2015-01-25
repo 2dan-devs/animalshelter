@@ -69,7 +69,7 @@
 	<!-- ################# ROW: back button, update button ####################  -->
 	<div class="row">
 		<div class="medium-12 large-12 columns">
-			<a href="{{ URL::previous() }}"><br><i class="fa fa-chevron-circle-left fa-lg left"> Back</i></a>
+			<a href="{{URL::to('admin/dashboard')}}"><br><i class="fa fa-chevron-circle-left fa-lg left"> Dashboard</i></a>
 			{{ Form::submit('Update', ['class'=>'button radius small right']) }}
 		</div>
 	</div>

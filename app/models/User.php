@@ -30,14 +30,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	protected $hidden = array('password', 'remember_token');
 
 	// Validation function accessible from anywhere when validating inputs for this model.
-	public static function validate ($input)
+	public static function validate ($input, $id)
 	{
 		// Validation rules.
 		$rules = array(
-			'username'				=>'required|between:3,80|alpha_dash|unique:users',
-	        'email'					=>'required|between:3,64|email|unique:users',
-	        'password'				=>'required|alpha_num|between:4,20|confirmed',
-	        'password_confirmation'	=>'required|alpha_num|between:4,20|same:password'
+			'username'					=>'required|between:3,80|alpha_dash|unique:users,username,'.$id, // $id passed to ignore unique requirement when updating.
+	      'email'						=>'required|between:3,64|email|unique:users,email,'.$id, // $id passed to ignore unique requirement when updating.
+	      'password'					=>'required|alpha_num|between:4,20|confirmed',
+	      'password_confirmation'	=>'required|alpha_num|between:4,20|same:password'
 		);
 		return Validator::make($input, $rules);
 	}

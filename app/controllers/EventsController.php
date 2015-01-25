@@ -104,7 +104,7 @@ class EventsController extends \BaseController {
 		$event->title = Input::get('title');
 		$event->start_date = Input::get('start_date');
 		$event->end_date = Input::get('end_date');
-
+		$event->active = Input::get('active');
 		$event->location = Input::get('location');
 		$event->address = Input::get('address');
 		$event->city = Input::get('city');

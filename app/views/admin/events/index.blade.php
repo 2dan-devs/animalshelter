@@ -47,6 +47,12 @@
 			</table>
 		</div>
 	</div>
+	<!-- ######## ROW ############## -->
+	<div class="row">
+		<div class="medium-12 large-12 columns">
+			<a href="{{URL::to('admin/dashboard')}}"><br><i class="fa fa-chevron-circle-left fa-lg left"> Dashboard</i></a>
+		</div>
+	</div><br><br>
 
 @stop
 
