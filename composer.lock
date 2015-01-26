@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1a1b6cf979fa569313c0e75f7ceccbd",
+    "hash": "4096dfbbf2d0ab4bbe60b5170340c6f3",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -151,12 +151,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fzaninotto/Faker.git",
-                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2"
+                "reference": "b1167d9c67a3325a3f4099eb7d848c6c30cc87c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
-                "reference": "1dc843aaf1b6032a78082145cc2abe41f0ce0ec2",
+                "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/b1167d9c67a3325a3f4099eb7d848c6c30cc87c2",
+                "reference": "b1167d9c67a3325a3f4099eb7d848c6c30cc87c2",
                 "shasum": ""
             },
             "require": {
@@ -195,7 +195,7 @@
                 "faker",
                 "fixtures"
             ],
-            "time": "2015-01-12 09:54:32"
+            "time": "2015-01-22 11:03:34"
         },
         {
             "name": "intervention/image",
@@ -203,12 +203,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "666475912cbff93d707ddbded9570b23e42cc6f4"
+                "reference": "6554d8165e048972b470a7d56ab5f4d6fd6c6367"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/666475912cbff93d707ddbded9570b23e42cc6f4",
-                "reference": "666475912cbff93d707ddbded9570b23e42cc6f4",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/6554d8165e048972b470a7d56ab5f4d6fd6c6367",
+                "reference": "6554d8165e048972b470a7d56ab5f4d6fd6c6367",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-01-14 15:57:44"
+            "time": "2015-01-20 17:10:23"
         },
         {
             "name": "ircmaxell/password-compat",
