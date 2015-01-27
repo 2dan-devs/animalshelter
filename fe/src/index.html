@@ -1,33 +1,23 @@
 <!doctype html>
-<html class="no-js" ng-app="fe">
+<html class="no-js" ng-app="animShelter">
   <head>
     <meta charset="utf-8">
-    <title>Animal Shelter</title>
-    <!-- Description for your page. Shouldn't be longer then 200 characters -->
-    <meta name="description" content="Animal shelter site. Cats and dogs for adoption. Volunteer to work at the shelter. Donate to the cause. Spread the word."/>
-    <!-- Keywords are used to define your content for search engines. Shouldn't be longer then 1,000 characters -->
-    <meta name="keywords" content="animal shelter, dogs, cats, adopt, new jersey, volunteer, animals, donate"/>
-    <!-- Defines how search engines should index your content. index: indicates search engines should index the page. follow: indicates hyperlinks should be followed -->
-    <meta name="robots" content="index,follow"/>
+    <title>My Animal Shelter</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    
-    <!-- build:css({.tmp,src}) styles/vendor.css -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
     <link rel="stylesheet" href="app/vendor.css">
     <!-- bower:css -->
-    <link rel="stylesheet" href="../bower_components/foundation/css/foundation.css" />
+    <!-- run `gulp wiredep` to automaticaly populate bower styles dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
-    
 
-    <!-- build:css({.tmp,src}) styles/app.css -->
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="app/index.css">
+    <!-- css files will be automaticaly insert here -->
     <!-- endinject -->
-    <!-- endbuild -->
-
-    <!-- build:js scripts/modernizr.js -->
-    <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
   </head>
   <body>
@@ -47,31 +37,19 @@
       ga('create','UA-XXXXX-X');ga('send','pageview');
     </script>
 
-    <!-- build:js scripts/vendor.js -->
+    <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="../bower_components/jquery/dist/jquery.js"></script>
-    <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-animate/angular-animate.js"></script>
-    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="../bower_components/angular-touch/angular-touch.js"></script>
-    <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <script src="../bower_components/jquery.cookie/jquery.cookie.js"></script>
-    <script src="../bower_components/jquery-placeholder/jquery.placeholder.js"></script>
-    <script src="../bower_components/foundation/js/foundation.js"></script>
+    <!-- run `gulp wiredep` to automaticaly populate bower script dependencies -->
     <!-- endbower -->
     <!-- endbuild -->
 
-    <!-- build:js({.tmp,src}) scripts/app.js -->
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
     <!-- inject:js -->
-    <script src="app/index.js"></script>
-    <script src="app/main/main.controller.js"></script>
-    <script src="components/navbar/navbar.controller.js"></script>
+    <!-- js files will be automaticaly insert here -->
     <!-- endinject -->
 
     <!-- inject:partials -->
-    <!-- angular templates will be automaticaly converted in js and inserted here -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
     <!-- endinject -->
     <!-- endbuild -->
 

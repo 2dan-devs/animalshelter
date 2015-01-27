@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fe')
+angular.module('animShelter')
   .controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       {
@@ -38,24 +38,6 @@ angular.module('fe')
         'url': 'https://github.com/angular/protractor',
         'description': 'End to end test framework for AngularJS applications built on top of WebDriverJS.',
         'logo': 'protractor.png'
-      },
-      {
-        'title': 'jQuery',
-        'url': 'http://jquery.com/',
-        'description': 'jQuery is a fast, small, and feature-rich JavaScript library.',
-        'logo': 'jquery.jpg'
-      },
-      {
-        'title': 'Foundation',
-        'url': 'http://foundation.zurb.com/',
-        'description': 'The most advanced responsive front-end framework in the world.',
-        'logo': 'foundation.png'
-      },
-      {
-        'title': 'Sass (Node)',
-        'url': 'https://github.com/sass/node-sass',
-        'description': 'Node.js binding to libsass, the C version of the popular stylesheet preprocessor, Sass.',
-        'logo': 'node-sass.png'
       }
     ];
     angular.forEach($scope.awesomeThings, function(awesomeThing) {

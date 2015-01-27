@@ -6,7 +6,7 @@
 }
 
 .panel {
-  margin-top: 50px;
+  margin-top: 30px;
 }
 
 .th {
@@ -17,5 +17,74 @@
     width: 50px;
   }
 }
+
+/************ Nav Top Bar **********/
+// .top-bar {
+//    text-align: center;
+//    overflow: hidden;
+
+//    .top-bar-section {
+//       display: inline-block;
+//    }
+// }
+
+/* ********** TOP BANNER **********/
+.top-banner {
+   text-align: center;
+   overflow: hidden;
+   height: 110px;
+}
+
+/* ************************** FOOTER ***************************/
+$footer-bg-color: #474747;
+$hover-color: #FF8000;
+$font-color: #E0E0E0;
+
+.footer-wrap {
+   height: 150px;
+   width: 100%;
+   background-color: $footer-bg-color;
+}
+
+.copyright-credits {
+   text-align: right;;
+   color: $font-color;
+   font-size: 11px;
+}
+
+.footer-links {
+   list-style-type: none;
+   font-size: 12px;
+   margin: 0;
+   padding: 0;
+
+   li {
+      a {
+         color: $font-color;
+      }
+
+      a:hover {
+         color: $hover-color;
+      }
+   }
+}
+
+.social-icons {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+
+   li {
+      margin-right: 16px;
+      display: inline;
+
+      a:hover {
+         cursor: hand;
+         color: $hover-color;
+      }
+   }
+}
+/* ************************** END FOOTER ***************************/
+
 // injector
 // endinjector

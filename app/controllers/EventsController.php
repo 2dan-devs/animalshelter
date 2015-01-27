@@ -110,7 +110,7 @@ class EventsController extends \BaseController {
 		$event->city = Input::get('city');
 		$event->state = Input::get('state');
 		$event->zip = Input::get('zip');
-		$event->zip = Input::get('phone');
+		$event->phone = Input::get('phone');
 		$event->body = Input::get('body');
 		$event->save();
 

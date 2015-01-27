@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fe')
+angular.module('animShelter')
   .controller('NavbarCtrl', function ($scope) {
-    $scope.date = new Date();
+
   });

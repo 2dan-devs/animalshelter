@@ -54,19 +54,19 @@
 			</div>
 			<div class="medium-3 large-3 columns">
 				<label>State:
-					<input type="text" name="state" id="" class="error" placeholder="Enter state" value="{{ Input::old('state') }}" required>
+					<input type="text" name="state" class="error" placeholder="Enter state" value="{{ Input::old('state') }}" required>
 					@if ($errors->has('state')) <small class="error input-error-label">{{ $errors->first('state') }}</small> @endif
 				</label>
 			</div>
 			<div class="medium-3 large-3 columns">
 				<label>Zip:
-					<input type="text" name="zip" id="" class="error" placeholder="Enter zip code" value="{{ Input::old('zip') }}" required>
+					<input type="text" name="zip" class="error" placeholder="Enter zip code" value="{{ Input::old('zip') }}" required>
 					@if ($errors->has('zip')) <small class="error input-error-label">{{ $errors->first('zip') }}</small> @endif
 				</label>
 			</div>
 			<div class="medium-3 large-3 columns">
 				<label>Call for More Info:
-					<input type="text" name="phone" id="" class="error" placeholder="Enter phone number" value="{{ Input::old('phone') }}" required>
+					<input type="text" name="phone" class="error" placeholder="Enter phone number" value="{{ Input::old('phone') }}" required>
 					@if ($errors->has('phone')) <small class="error input-error-label">{{ $errors->first('phone') }}</small> @endif
 				</label>
 			</div>

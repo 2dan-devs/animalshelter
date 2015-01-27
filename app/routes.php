@@ -8,20 +8,14 @@ Route::get('/', function()
 
 /* ------------------------  End User Routes --------------------------------- */
 // route to show the login form
-Route::get('login', ['uses'=>'UserController@loginForm']);
+Route::get('adminlogin', ['uses'=>'UserController@loginForm']);
 // route to process the form
-Route::post('login', ['uses'=>'UserController@loginPost']);
-//Route to forgotten password form
-Route::get('forgotpassword', function()
-{
-   return View::make('user.forgotpassword')
-      ->with('title', 'Get Password');
-});
+Route::post('adminlogin', ['uses'=>'UserController@loginPost']);
 // Log out user
-Route::get('logout', function()
+Route::get('adminlogout', function()
 {
     Auth::logout();
-    return Redirect::to('login')->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
+    return Redirect::to('adminlogin')->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
 });
 /* ------------------------  End User Routes --------------------------------- */
 
@@ -108,3 +102,10 @@ Route::group(array('prefix' => '/client_api'), function()
 /* ---------------------- END ANGULAR.JS API ROUTES ---------------------- */
 
 # TODO: catch all not found routes and display nice 404 error.
+
+
+// Cat missing routes and show 404 not found error with nice view.
+App::missing(function($exception)
+{
+    return View::make('404');
+});

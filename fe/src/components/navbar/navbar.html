@@ -1,18 +1,26 @@
-<nav class="top-bar row" ng-controller="NavbarCtrl">
-  <ul class="title-area">
-    <li class="name">
-      <h1><a href="https://github.com/Swiip/generator-gulp-angular">Gulp & Angular</a></h1>
-    </li>
-  </ul>
-
-  <section class="top-bar-section">
-    <ul class="right">
-      <li class="active"><a ng-href="#">Home</a></li>
-      <li><a ng-href="#">About</a></li>
-      <li><a ng-href="#">Contact</a></li>
+<div class="contain-to-grid">
+   <div class="top-banner">
+      <img src="assets/images/homepage_banner.jpg" alt="homepage banner">
+   </div>
+  <nav class="top-bar row" data-topbar role="navigation" ng-controller="NavbarCtrl">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="#"></a></h1>
+      </li>
+      <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
     </ul>
-    <ul class="left">
-      <li><a ng-href="#">Current date: {{ date | date:'yyyy-MM-dd' }}</a></li>
-    </ul>
-  </section>
-</nav>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class=""><a ng-href="#">Home</a></li>
+        <li class=""><a ng-href="#">Adopt</a></li>
+        <li class=""><a ng-href="#">Application</a></li>
+        <li class=""><a ng-href="#">Volunteer</a></li>
+        <li class=""><a ng-href="#">Events</a></li>
+        <li class=""><a ng-href="#">Donate</a></li>
+        <li><a ng-href="#">About Us</a></li>
+        <li><a ng-href="#">Contact Us</a></li>
+      </ul>
+    </section>
+  </nav>
+</div>

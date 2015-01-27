@@ -6,13 +6,10 @@
 'use strict';
 
 var MainPage = function() {
-  this.jumbEl = element(by.css('.jumbotron'));
+  this.jumbEl = element(by.css('.panel'));
   this.h1El = this.jumbEl.element(by.css('h1'));
   this.imgEl = this.jumbEl.element(by.css('img'));
-
-  this.techEl = element(by.css('.row'));
-  this.thumbnailEls = this.techEl.all(by.repeater('awesomeThing in awesomeThings'));
+  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in awesomeThings'));
 };
 
 module.exports = new MainPage();
-

@@ -63,7 +63,7 @@
                   <li class="divider"></li>
                   <li class="top-bar-menu-item"><a href="{{ URL::to('admin/profile') }}">Profile</a></li>
                   <li class="divider"></li>
-                  <li class="top-bar-menu-item"><a href="{{ URL::to('/logout') }}"> Log Out </a></li>
+                  <li class="top-bar-menu-item"><a href="{{ URL::to('/adminlogout') }}"> Log Out </a></li>
                 </ul>
             </section>
         </nav>
