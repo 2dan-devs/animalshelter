@@ -1,0 +1,85 @@
+// bower:scss
+// endbower
+
+// CUSTOM Top Bar ----------------------------------
+.top-bar {
+   color: white;
+   background: #E1E4E8;
+
+   .top-bar-section li:not(.has-form) a:not(.button) {
+      background: #E1E4E8;
+      color: #373737;
+   }
+
+   .name h1 a {
+      color: #373737;
+   }
+
+   .toggle-topbar.menu-icon {
+      color: #373737;
+
+      a {
+         color: #373737;
+      }
+   }
+}
+
+.top-bar.expanded .title-area {
+  background: #E1E4E8;
+}
+
+.top-bar .toggle-topbar.menu-icon a span::after {
+  box-shadow: 0 0 0 1px #888888, 0 7px 0 1px #888888, 0 14px 0 1px #888888;
+}
+
+// Footer -------------------------------------------------
+$footer-bg-color: #E1E4E8;
+$hover-color: #F8AC0E;
+$font-color: #373737;
+
+.footer-wrap {
+   height: 170px;
+   background-color: $footer-bg-color;
+   border-top: thick solid #D2D2D2;
+}
+
+.copyright-credits {
+   text-align: right;
+   margin-right: 16px;
+   color: $font-color;
+   font-size: 11px;
+}
+
+.footer-links {
+   list-style-type: none;
+   font-size: 12px;
+   margin-left: 16px;
+   padding: 0;
+
+   li {
+      a {
+         color: $font-color;
+      }
+
+      a:hover {
+         color: $hover-color;
+      }
+   }
+}
+
+.social-icons {
+   list-style-type: none;
+   li {
+      margin-right: 16px;
+      display: inline;
+      a {
+         color: $font-color;
+         text-decoration: none;
+      }
+      a:hover {
+         text-decoration: none;
+         cursor: hand;
+         color: $hover-color;
+      }
+   }
+}
