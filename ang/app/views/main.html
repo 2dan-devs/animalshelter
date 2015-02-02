@@ -1,8 +1,89 @@
+<!-- Important Owl stylesheet and Theme -->
+<link rel="stylesheet" href="assets/owl-carousel/owl.carousel.css">
+<link rel="stylesheet" href="assets/owl-carousel/owl.theme.css">
+
+<style>
+	.owl-carousel .item img{
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+	.home-tile {
+		padding: 0px;
+		border-radius: 8px;
+		overflow: hidden;
+	}
+	.subscribe img {
+		float: right;
+		position: relative;
+		z-index: -6;
+	}
+</style>
+
 <br>
+<!-- Slider Content -->
 <div class="row">
-   <div class="medium-12 large-12 columns">
-      <div class="panel">
-         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quaerat, ducimus modi dolore sed similique, perspiciatis nisi nulla, officiis nihil quis officia itaque tenetur iure neque, praesentium consequuntur ipsa maxime dolor! Non veniam velit labore ipsa, facere vel eos adipisci voluptate corrupti. Omnis sint fuga impedit earum doloremque voluptates blanditiis, aperiam ratione minus non, beatae maiores perferendis repellat eum, cumque! Exercitationem fugit inventore voluptatum neque dicta nobis aliquam veritatis molestiae esse optio voluptatem saepe blanditiis nulla modi repellendus harum itaque fuga sapiente, deserunt perspiciatis mollitia atque enim vitae. Pariatur commodi, voluptatem optio. Optio nemo temporibus, odit eos earum magni ipsa incidunt aliquam eligendi vitae, sapiente, laborum id hic a accusantium, ducimus. Iste dolorum blanditiis quisquam consectetur assumenda. Provident cumque doloremque dignissimos dolore dolorem culpa quaerat saepe, rem, necessitatibus? Numquam nesciunt voluptas ut animi voluptatem minima earum commodi maxime nobis culpa illum quisquam nisi, voluptatibus dicta optio labore ex atque incidunt iure quae hic ipsa veritatis dolores repellat! Ex iure quia, quis dolores dolor consequuntur officiis unde laudantium illum cum necessitatibus veritatis sequi eligendi. Ipsum consequuntur, quasi, aperiam praesentium veniam id perferendis, consectetur dolorem doloremque cupiditate ab quo minima vel dicta repudiandae dignissimos eum labore tenetur officiis cum maiores. Nisi, consectetur, laboriosam.</p>
-      </div>
-   </div>
+	<div class="medium-12 large-12 columns">
+		<div id="owl-carousel" class="owl-carousel owl-theme">
+		  <div class="item"><img src="http://lorempixel.com/800/400/cats/3" alt="slide 1"></div>
+		  <div class="item"><img src="http://lorempixel.com/800/400/animals/7" alt="slide 2"></div>
+		  <div class="item"><img src="http://lorempixel.com/800/400/animals/8" alt="slide 3"></div>
+		  <div class="item"><img src="http://lorempixel.com/800/400/animals/9" alt="slide 4"></div>
+		  <div class="item"><img src="http://lorempixel.com/800/400/cats/4" alt="slide 5"></div>
+		</div>
+	</div>
 </div>
+<br>
+<!-- ROW -->
+<div class="row">
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href="#/adopt-a-cat"><img src="images/adopt-me-cat.jpg" alt="adopt a cat"></a>
+		</div>
+	</div>
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href="#/adopt-a-dog"><img src="images/adopt-me-dog.jpg" alt="adopt a dog"></a>
+		</div>
+	</div>
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href=""><img src="images/subscribe.jpg" alt="subscribe"></a>
+		</div>
+	</div>
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href=""><img src="images/donate.jpg" alt="donate"></a>
+		</div>
+	</div>
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href=""><img src="images/volunteer.jpg" alt="volunteer"></a>
+		</div>
+	</div>
+	<div class="medium-6 large-4 columns end">
+		<div class="panel home-tile">
+			<a href=""><img src="images/events.jpg" alt="events"></a>
+		</div>
+	</div>
+</div>
+
+<!-- Owl Carousel JS -->
+<script src="assets/owl-carousel/owl.carousel.js"></script>
+<script>
+	 $("#owl-carousel").owlCarousel({
+      navigation : false, // Show next and prev buttons
+      // navigationText: ["Prev", "Next"]
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoPlay: true,
+      responsive: true
+      // "singleItem:true" is a shortcut for:
+      // items : 1,
+      // itemsDesktop : false,
+      // itemsDesktopSmall : false,
+      // itemsTablet: false,
+      // itemsMobile : false
+  });
+</script>

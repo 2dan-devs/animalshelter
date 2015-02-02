@@ -1,6 +1,10 @@
 // bower:scss
 // endbower
 
+body {
+   background: #CFCFCFFF;
+}
+
 // CUSTOM Top Bar ----------------------------------
 .top-bar {
    color: white;
@@ -9,6 +13,10 @@
    .top-bar-section li:not(.has-form) a:not(.button) {
       background: #E1E4E8;
       color: #373737;
+
+      &:hover {
+         color: #F8AC0E;
+      }
    }
 
    .name h1 a {
@@ -38,7 +46,7 @@ $hover-color: #F8AC0E;
 $font-color: #373737;
 
 .footer-wrap {
-   height: 170px;
+   height: 220px;
    background-color: $footer-bg-color;
    border-top: thick solid #D2D2D2;
 }

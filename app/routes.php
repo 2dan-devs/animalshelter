@@ -104,7 +104,7 @@ Route::group(array('prefix' => '/client_api'), function()
 # TODO: catch all not found routes and display nice 404 error.
 
 
-// Cat missing routes and show 404 not found error with nice view.
+// Catch missing routes and show 404 not found error with nice view.
 App::missing(function($exception)
 {
     return View::make('404');
