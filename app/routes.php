@@ -3,7 +3,7 @@
 // Display view (homepage) in /app/views/index.php
 Route::get('/', function()
 {
-	return View::make('index');
+	return View::make('angular');
 });
 
 /* ------------------------  End User Routes --------------------------------- */
@@ -16,11 +16,10 @@ Route::get('adminlogout', function()
 {
     Auth::logout();
     return Redirect::to('adminlogin')->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
-});
-/* ------------------------  End User Routes --------------------------------- */
+});/* ------------------------  End User Routes --------------------------------- */
+
 
 /* --------------------------- ADMIN PREFIXED ROUTES ---------------------------- */
-
 Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 {
 	// Display dashboard view in /app/views/admin/dashboard.blade.php
@@ -32,7 +31,7 @@ Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 	// Routes: index, create, store, show, edit, update, destroy.
 	Route::resource('dashboard/animal', 'AnimalController');
 
-	// // Route to create, view, and destroy statuses, species, and breeds.
+	// Route to create, view, and destroy statuses, species, and breeds.
 	Route::get('dashboard/attributes', function()
 	{
 		// Get all species from database species table.
@@ -60,7 +59,7 @@ Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 	// Resouce to view and update Contact Us information.
 	Route::resource('dashboard/contactus', 'ContactUsController');
 
-	// Update User Information section *******************************************************
+	// Update User Information section **********************
 	Route::get('profile', function()
 	{
 		$username = Auth::user()->username;
@@ -69,7 +68,7 @@ Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 		return View::make('user.profile', ['username'=>$username, 'user'=>$user])->withTitle('Edit User Profile');
 	});
 	Route::post('profile/update/{id}', ['uses'=>'UserController@updateProfile']);
-	// Update User Information section *******************************************************
+	// End Update User Information section ******************
 
 	// API for jQuery to display breeds based on specie selected.
 	Route::get('breed-based-on-specie', function()
@@ -86,23 +85,17 @@ Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 
 
 /* ----------------------- ANGULAR.JS API ROUTES ------------------------ */
-
-Route::group(array('prefix' => '/client_api'), function()
+Route::group(['prefix'=>'client_api'], function()
 {
-	// Get all animals based on specie requested by Angular.
-	Route::get('all-from-species', 'ClientApiController@getAllFromSpecies');
-
-	// Get specific animal based on specie and id
-	Route::get('{animal}', 'ClientApiController@getAnimalData');
-
-	Route::get('events', 'ClientApiController@getAllEvents');
-
+	Route::get('all-from-species', 'ClientApiController@AllFromSpecies');
+	Route::get('events', 'ClientApiController@AllEvents');
 	Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
+	Route::get('aboutus', 'ClientApiController@aboutUs');
+	Route::get('contactus', 'ClientApiController@contactUs');
+	Route::get('{animal}', 'ClientApiController@AnimalData');
 });
+
 /* ---------------------- END ANGULAR.JS API ROUTES ---------------------- */
-
-# TODO: catch all not found routes and display nice 404 error.
-
 
 // Catch missing routes and show 404 not found error with nice view.
 App::missing(function($exception)

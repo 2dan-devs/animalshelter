@@ -9,14 +9,7 @@
  * Main module of the application.
  */
 angular
-  .module('animalShelterApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
+  .module('animalShelterApp', ['ngAnimate','ngCookies','ngRoute','ngSanitize'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

@@ -8,10 +8,10 @@
  * Controller of the animalShelterApp
  */
 angular.module('animalShelterApp')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('AboutCtrl', function ($scope, $http) {
+
+  		$http.get('/client_api/aboutus')
+  			.success(function(response) {
+    			$scope.aboutus = response;
+  		});
   });
