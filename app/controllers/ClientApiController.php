@@ -31,4 +31,14 @@ class ClientApiController extends \BaseController {
 		// Return Json for Angular use.
 		return Response::json($aboutus);
 	}
+
+		/**
+	* @return Response::json
+	*/
+	public function contactUs()
+	{
+		$contactus = ContactUs::find(1);
+		// Return Json for Angular use.
+		return Response::json($contactus);
+	}
 }

@@ -1,0 +1,48 @@
+<!-- Contact Us - /views/contact.html -->
+
+<div class="row">
+	<div class="contact-title-wrap medium-3 medium-centered large-3 large-centered columns">
+		<h3>Contact Us</h3>
+	</div>
+</div>
+
+<div class="panel">
+	<form action="post">
+		<div class="row">
+			<div class="medium-4 large-4 columns">
+				<label for="">Full Name:
+					<input type="text" placeholder="full name" required>
+				</label>
+			</div>
+			<div class="medium-4 large-4 columns">
+				<h5>{{contact.title}}</h5>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-4 large-4 columns">
+				<label for="">E-mail:
+					<input type="text" placeholder="enter email" required>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-4 large-4 columns">
+				<label for="">Phone Number:
+					<input type="text" placeholder="enter phone">
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-6 large-6 columns">
+				<label for="">Message:
+					<textarea name="" id="" cols="30" rows="10" placeholder="type message" required></textarea>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="medium-6 large-6 columns">
+				<input type="submit" class="button small radius right" value="send">
+			</div>
+		</div>
+	</form>
+</div>

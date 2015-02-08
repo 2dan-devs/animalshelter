@@ -22,9 +22,11 @@
 
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/about.css">
+    <link rel="stylesheet" href="styles/contact.css">
     <!-- endbuild -->
   </head>
   <body ng-app="animalShelterApp">
+  <div class="body-wrapper">
       <!--[if lt IE 7]>
          <p class="browsehappy">You are using an <strong>outdated</strong> browser.
          Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -33,7 +35,7 @@
       <!-- Top Banner and Navigation Bar -->
       <div class="row">
          <div class="medium-12 large-12 columns">
-            <img src="images/homepage_banner.jpg" alt="homepage banner">
+            <img src="images/homepage_banner.jpg" class="homepage-banner" alt="homepage banner">
             <nav class="top-bar" data-topbar role="navigation">
                <ul class="title-area">
                   <li class="name">
@@ -48,8 +50,8 @@
                      <li class=""><a ng-href="">Adopt</a></li>
                      <li class=""><a ng-href="">Volunteer</a></li>
                      <li class=""><a ng-href="">Events</a></li>
+                     <li><a ng-href="#/contact">Contact Us</a></li>
                      <li><a ng-href="#/about">About Us</a></li>
-                     <li><a ng-href="">Contact Us</a></li>
                   </ul>
                </section>
             </nav>
@@ -92,6 +94,7 @@
             </div>
          </div>
       </div>
+    </div>
 
       <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
       <script>
@@ -131,6 +134,7 @@
       <script src="scripts/app.js"></script>
       <script src="scripts/controllers/main.js"></script>
       <script src="scripts/controllers/about.js"></script>
+      <script src="scripts/controllers/contact.js"></script>
       <!-- endbuild -->
 
       <!-- Start Foundation -->

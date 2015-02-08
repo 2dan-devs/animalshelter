@@ -2,16 +2,24 @@
 // endbower
 
 body {
-   background-color: #CFCFCFFF;
+   background-color: #F5F3F1;
+}
+
+.homepage-banner {
+   width: 100%;
 }
 
 // CUSTOM Top Bar ----------------------------------
+$mytopbar-bg: #DFE2E3;
+
 .top-bar {
+   height: 48px;
    color: white;
-   background: #E1E4E8;
+   background: $mytopbar-bg;
+   border-bottom: 1px solid #ccc;
 
    .top-bar-section li:not(.has-form) a:not(.button) {
-      background: #E1E4E8;
+      background: $mytopbar-bg;
       color: #373737;
 
       &:hover {
@@ -41,14 +49,16 @@ body {
 }
 
 // Footer -------------------------------------------------
-$footer-bg-color: #E1E4E8;
+$footer-bg-color: #DFE2E3;
 $hover-color: #F8AC0E;
 $font-color: #373737;
 
 .footer-wrap {
-   height: 220px;
+   height: 240px;
    background-color: $footer-bg-color;
    border-top: thick solid #D2D2D2;
+   border-left: 1px solid #D2D2D2;
+   border-right: 1px solid #D2D2D2;
 }
 
 .copyright-credits {
