@@ -8,10 +8,15 @@
  * Controller of the animalShelterApp
  */
 angular.module('animalShelterApp')
-  .controller('AboutCtrl', function ($scope, $http) {
+	.controller('AboutCtrl', function ($scope, SharedServices) {
 
-  		$http.get('/client_api/aboutus')
-  			.success(function(response) {
-    			$scope.aboutus = response;
-  		});
-  });
+		var spinner = angular.element('.fa-spinner');
+		/*
+		 * Get About Info from Backend API and remove spinner on success
+		 */
+		SharedServices.getAboutInfo().success(function(response) {
+			spinner.hide();
+			$scope.aboutus = response;
+		});
+
+	});

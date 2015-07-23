@@ -1,8 +1,9 @@
 // bower:scss
 // endbower
+$body-bg-color: #f5f3f1;
 
 body {
-   background-color: #F5F3F1;
+   background-color: $body-bg-color;
 }
 
 .homepage-banner {
@@ -48,7 +49,7 @@ $mytopbar-bg: #DFE2E3;
   box-shadow: 0 0 0 1px #888888, 0 7px 0 1px #888888, 0 14px 0 1px #888888;
 }
 
-// Footer -------------------------------------------------
+/* Footer ------------------------------------------------- */
 $footer-bg-color: #DFE2E3;
 $hover-color: #F8AC0E;
 $font-color: #373737;
@@ -100,4 +101,8 @@ $font-color: #373737;
          color: $hover-color;
       }
    }
+}
+
+.active-item {
+   color: orange !important;
 }

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+.pet-img {
+   border-radius: 4px;
+   cursor: pointer;
+   float: left;
+   margin-bottom: 4px;
+   margin-right: 12px;
+   width: 64%;
+}
+
+.pet-description {
+   clear: both;
+   size: .9em;
+   white-space: pre-wrap;
+}
+
+.pet-details {
+   list-style: none;
+}
+
+.pet-field-title {
+   color: #A5A5A5 !important;
+   font-size: .9em;
+   font-weight: bold;
+}
+
+.pet-field-value {
+   background-color: #E8E8E8;
+   border-radius: 4px;
+   color: #828282;
+   font-size: 1em;
+   margin-bottom: 2px;
+}
+
+.adopt-title-wrap {
+   margin-top: 60px;
+}

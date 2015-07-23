@@ -14,3 +14,4 @@ composer.phar
 # Ignore pesky DB and Index files
 .DS_Store
 Thumbs.db
+/nbproject/private/

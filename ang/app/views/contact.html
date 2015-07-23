@@ -1,48 +1,82 @@
 <!-- Contact Us - /views/contact.html -->
-
 <div class="row">
-	<div class="contact-title-wrap medium-3 medium-centered large-3 large-centered columns">
-		<h3>Contact Us</h3>
-	</div>
-</div>
+   <div class="contact-title-wrap medium-3 medium-centered large-3 large-centered columns">
+      <h3>Contact Us</h3>
+      <i class="fa fa-spinner fa-pulse fa-2x"></i>
+      <br>
+   </div>
+</div> <!-- End Title Row -->
 
-<div class="panel">
-	<form action="post">
-		<div class="row">
-			<div class="medium-4 large-4 columns">
-				<label for="">Full Name:
-					<input type="text" placeholder="full name" required>
-				</label>
-			</div>
-			<div class="medium-4 large-4 columns">
-				<h5>{{contact.title}}</h5>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-4 large-4 columns">
-				<label for="">E-mail:
-					<input type="text" placeholder="enter email" required>
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-4 large-4 columns">
-				<label for="">Phone Number:
-					<input type="text" placeholder="enter phone">
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-6 large-6 columns">
-				<label for="">Message:
-					<textarea name="" id="" cols="30" rows="10" placeholder="type message" required></textarea>
-				</label>
-			</div>
-		</div>
-		<div class="row">
-			<div class="medium-6 large-6 columns">
-				<input type="submit" class="button small radius right" value="send">
-			</div>
-		</div>
-	</form>
-</div>
+<div class="row panel contact-wrap">
+   <br>
+   <div class="medium-6 large-6 columns"><!-- Form Column Start -->
+      <form name="contactform" ng-submit="submitForm()">
+         <div class="row"> <!-- Name Input Row -->
+            <div class="medium-12 large-11 columns">
+               <label for="name">Full Name:<br>
+                  <span class="form-error" ng-show="contactform.name.$error.pattern">
+                  Name cannot contain numbers. Minimum length is 4 characters.</span>
+                  <input name="name" type="text" placeholder="full name" ng-model="formData.name"
+                  ng-pattern="/^[a-zA-Z ]{4,30}$/" required>
+               </label>
+            </div>
+         </div>
+         <div class="row"> <!-- Email Input Row -->
+            <div class="medium-12 large-11 columns">
+               <label for="email">E-mail:<br>
+                  <span class="form-error" ng-show="contactform.email.$error.email">
+                  Email format must be, yourname@example.com</span>
+                  <input name="email" type="email" placeholder="enter email" ng-model="formData.email" required>
+               </label>
+            </div>
+         </div>
+         <div class="row"> <!-- Phone Number Input Row -->
+            <div class="medium-12 large-11 columns">
+               <label for="number">Phone Number:<br>
+                  <span class="form-error" ng-show="contactform.phone.$error.pattern">
+                  Invalid phone number.</span>
+                  <input name="phone" type="text" placeholder="enter phone" ng-model="formData.phone"
+                  ng-pattern="/^\b\d{3}[-.]?\d{3}[-.]?\d{4}\b$/" required>
+               </label>
+            </div>
+         </div>
+         <div class="row"> <!-- Textarea Input Row -->
+            <div class="medium-12 large-11 columns">
+               <label for="message">Message:<br>
+                  <span class="form-error" ng-show="contactform.message.$error.minlength">
+                  Message must be at least 30 characters.</span>
+                  <textarea name="message" cols="30" rows="10" placeholder="type message"
+                  ng-model="formData.message" ng-minlength="20" required></textarea>
+               </label>
+            </div>
+         </div>
+         <div class="row"> <!-- Submit Button Row -->
+            <div class="medium-12 large-12 columns">
+               <input type="submit" class="button radius left" value="send" ng-disabled="contactform.$invalid">
+            </div>
+         </div>
+      </form>
+   </div> <!-- Form Column End-->
+
+   <div class="medium-6 large-6 column"><!-- Contact Info Column Start -->
+      <div class="row"> <!-- title Row -->
+         <div class="medium-12 large-12 columns">
+            <h5 class="text-center">{{ contactInfo.title }}</h5>
+            <div class="shelter-contact-text">
+               <p>{{ contactInfo.address }}</p>
+               <p>{{ contactInfo.city }} {{ contactInfo.state }} {{ contactInfo.zip }}</p>
+               <p><b>Phone:</b> {{ contactInfo.phone_1 }}</p>
+               <p><b>Email:</b> {{ contactInfo.email_1 }}</p>
+            </div>
+         </div>
+      </div> <!-- End Title Row -->
+      <div class="row"> <!-- Google Map Row -->
+         <div class="medium-12 large-12 columns">
+            <div id="gmap"></div>
+            <a ng-href="https://www.google.com/maps/dir//Central+Park,+New+York,+NY/@40.7039509,-74.2732138"
+             target="blank" class="right">Get Directions</a>
+         </div>
+      </div> <!-- End Map Row -->
+   </div> <!-- Contact Info Column End -->
+   <br>
+</div><br>

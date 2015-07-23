@@ -1,0 +1,43 @@
+<br><br>
+<div class="row adopt-title-wrap">
+	<div class="medium-5 large-5 column">
+		<h4>Find Your Next Best Friend</h4>
+	</div>
+	<div class="medium-1 large-1 column">
+		<i class="fa fa-spinner fa-pulse fa-2x"></i>
+	</div>
+	<div class="medium-2 large-2 column right">
+		<input type="radio" ng-model="species" value="dogs">
+		<label>Dogs Only</label>
+	</div>
+	<div class="medium-2 large-2 column right">
+		<input type="radio" ng-model="species" value="cats">
+		<label>Cats Only</label>
+	</div>
+	<div class="medium-2 large-2 column right">
+		<input type="radio" ng-model="species" value="all">
+		<label>Show All</label>
+	</div>
+</div><br>
+
+<div class="row">
+	<!-- Start Single Animal Record -->
+	<div class="single-record medium-6 large-6 end column" dir-paginate="animal in animals | itemsPerPage: 6">
+		<div class="panel">
+			<img class="pet-img" ng-src="{{ animal.profile_photo }}" alt="pet for adoption">
+			<ul class="pet-details">
+				<li class="pet-field-title">Name</li>
+				<li class="pet-field-value">{{ animal.name }}</li>
+				<li class="pet-field-title">Age</li>
+				<li class="pet-field-value">{{ animal.dob }}</li>
+				<li class="pet-field-title">Breed</li>
+				<li class="pet-field-value">{{ animal.breed }}</li>
+				<li class="pet-field-title">Code</li>
+				<li class="pet-field-value">{{ animal.shelter_code }}</li>
+			</ul>
+			<p class="pet-description">{{ animal.description }}</p>
+		</div>
+	</div> <!-- End Single Animal Record -->
+</div>
+
+<dir-pagination-controls></dir-pagination-controls>

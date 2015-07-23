@@ -8,7 +8,6 @@
  * Controller of the animalShelterApp
  */
 angular.module('animalShelterApp')
-  .controller('MainCtrl', function ($scope) {
-
+  .controller('MainCtrl', function () {
 
   });

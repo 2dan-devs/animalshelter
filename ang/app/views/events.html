@@ -1,0 +1,28 @@
+<!-- Events /views/events.html -->
+<div class="text-center events-title-wrap">
+   <h3>Events</h3>
+   <i class="fa fa-spinner fa-pulse fa-2x"></i>
+</div>
+
+<div class="panel event-wrap" ng-repeat="shelterEvent in shelterEvents"> <!-- Event Start -->
+	<div class="row">
+		<div class="medium-3 large-3 column">
+			<dl>
+				<dt>{{ shelterEvent.title }}</dt>
+				<dd class="event-date"><u>Start Date:</u> {{ shelterEvent.start_date }}</dd>
+				<dd class="event-date"><u>End Date:</u> {{ shelterEvent.end_date }}</dd>
+			</dl>
+		</div>
+		<div class="medium-6 large-6 event-body column">
+			<p>{{ shelterEvent.body }}</p>
+		</div>
+		<div class="medium-3 large-3 column text-center">
+			<ul class="vcard">
+				<li class="fn">{{ shelterEvent.location }}</li>
+				<li class="street-address">{{ shelterEvent.address }}</li>
+				<li><span class="state">{{ shelterEvent.city }} {{ shelterEvent.state }}, {{ shelterEvent.zip }}</span></li>
+				<li class="email">Info: {{ shelterEvent.phone }}</li>
+			</ul>
+		</div>
+	</div>
+</div> <!-- End Event -->

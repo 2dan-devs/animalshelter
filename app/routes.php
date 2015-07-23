@@ -3,7 +3,7 @@
 // Display view (homepage) in /app/views/index.php
 Route::get('/', function()
 {
-	return View::make('angular');
+   return View::make('angular');
 });
 
 /* ------------------------  End User Routes --------------------------------- */
@@ -15,71 +15,72 @@ Route::post('adminlogin', ['uses'=>'UserController@loginPost']);
 Route::get('adminlogout', function()
 {
     Auth::logout();
-    return Redirect::to('adminlogin')->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
+    return Redirect::to('adminlogin')
+            ->with('message', FlashMessage::DisplayAlert('Logged out successfully', 'success'));
 });/* ------------------------  End User Routes --------------------------------- */
 
 
 /* --------------------------- ADMIN PREFIXED ROUTES ---------------------------- */
 Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 {
-	// Display dashboard view in /app/views/admin/dashboard.blade.php
-	Route::get('dashboard', function()
-	{
-		return View::make('admin.dashboard')->with('title', 'Dashboard');
-	});
+   // Display dashboard view in /app/views/admin/dashboard.blade.php
+   Route::get('dashboard', function()
+   {
+      return View::make('admin.dashboard')->with('title', 'Dashboard');
+   });
 
-	// Routes: index, create, store, show, edit, update, destroy.
-	Route::resource('dashboard/animal', 'AnimalController');
+   // Routes: index, create, store, show, edit, update, destroy.
+   Route::resource('dashboard/animal', 'AnimalController');
 
-	// Route to create, view, and destroy statuses, species, and breeds.
-	Route::get('dashboard/attributes', function()
-	{
-		// Get all species from database species table.
-		$species = Species::all();
-		// Get all Cat breeds from database breeds table.
-		$breeds = Breed::all();
-		// Get all data from status table on database.
-		$statuses = Status::all();
+   // Route to create, view, and destroy statuses, species, and breeds.
+   Route::get('dashboard/attributes', function()
+   {
+      // Get all species from database species table.
+      $species = Species::all();
+      // Get all Cat breeds from database breeds table.
+      $breeds = Breed::all();
+      // Get all data from status table on database.
+      $statuses = Status::all();
 
-		return View::make('admin.animal.attributes',
-							['species'=>$species, 'breeds'=>$breeds, 'statuses'=>$statuses])
-				->with('title', 'Status / Species / Breeds');
-	});
+      return View::make('admin.animal.attributes',
+                     ['species'=>$species, 'breeds'=>$breeds, 'statuses'=>$statuses])
+            ->with('title', 'Status / Species / Breeds');
+   });
 
-	// Resouce to create, edit, update, and delete shelter events.
-	Route::resource('dashboard/events', 'EventsController');
-	// Resouce to create and destroy statuses
-	Route::resource('dashboard/status', 'StatusController');
-	// Resouce to create and destroy statuses
-	Route::resource('dashboard/species', 'SpeciesController');
-	// Resouce to create and destroy statuses
-	Route::resource('dashboard/breed', 'BreedController');
-	// Resouce to view and update About Us information.
-	Route::resource('dashboard/aboutus', 'AboutUsController');
-	// Resouce to view and update Contact Us information.
-	Route::resource('dashboard/contactus', 'ContactUsController');
+   // Resouce to create, edit, update, and delete shelter events.
+   Route::resource('dashboard/events', 'EventsController');
+   // Resouce to create and destroy statuses
+   Route::resource('dashboard/status', 'StatusController');
+   // Resouce to create and destroy statuses
+   Route::resource('dashboard/species', 'SpeciesController');
+   // Resouce to create and destroy statuses
+   Route::resource('dashboard/breed', 'BreedController');
+   // Resouce to view and update About Us information.
+   Route::resource('dashboard/aboutus', 'AboutUsController');
+   // Resouce to view and update Contact Us information.
+   Route::resource('dashboard/contactus', 'ContactUsController');
 
-	// Update User Information section **********************
-	Route::get('profile', function()
-	{
-		$username = Auth::user()->username;
-		$user = User::find(Auth::user()->id);
+   // Update User Information section **********************
+   Route::get('profile', function()
+   {
+      $username = Auth::user()->username;
+      $user = User::find(Auth::user()->id);
 
-		return View::make('user.profile', ['username'=>$username, 'user'=>$user])->withTitle('Edit User Profile');
-	});
-	Route::post('profile/update/{id}', ['uses'=>'UserController@updateProfile']);
-	// End Update User Information section ******************
+      return View::make('user.profile', ['username'=>$username, 'user'=>$user])
+            ->withTitle('Edit User Profile');
+   });
+   Route::post('profile/update/{id}', ['uses'=>'UserController@updateProfile']);
+   // End Update User Information section ******************
 
-	// API for jQuery to display breeds based on specie selected.
-	Route::get('breed-based-on-specie', function()
-	{
-		$species_id = Input::get('species_id');
-		// Get breeds for specie selected.
-		$breeds = Breed::where('species_id', '=', $species_id)->orderBy('name')->get();
-
-		// Return data as Json.
-		return Response::json($breeds);
-	});
+   // API for jQuery to display breeds based on specie selected.
+   Route::get('breed-based-on-specie', function()
+   {
+      $species_id = Input::get('species_id');
+      // Get breeds for specie selected.
+      $breeds = Breed::where('species_id', '=', $species_id)->orderBy('name')->get();
+      // Return data as Json.
+      return Response::json($breeds);
+   });
 });
 /* --------------------------- END ADMIN ROUTES ------------------------- */
 
@@ -87,12 +88,14 @@ Route::group(['before'=>'auth', 'prefix' => '/admin'], function()
 /* ----------------------- ANGULAR.JS API ROUTES ------------------------ */
 Route::group(['prefix'=>'client_api'], function()
 {
-	Route::get('all-from-species', 'ClientApiController@AllFromSpecies');
-	Route::get('events', 'ClientApiController@AllEvents');
-	Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
-	Route::get('aboutus', 'ClientApiController@aboutUs');
-	Route::get('contactus', 'ClientApiController@contactUs');
-	Route::get('{animal}', 'ClientApiController@AnimalData');
+   Route::get('all_animals', 'ClientApiController@AllAnimals');
+   Route::get('all_dogs', 'ClientApiController@AllDogs');
+   Route::get('all_cats', 'ClientApiController@AllCats');
+   Route::get('events', 'ClientApiController@AllEvents');
+   Route::post('subscribe', 'ClientApiController@subscribeToNewsletters');
+   Route::get('aboutus', 'ClientApiController@aboutUs');
+   Route::get('contactus', 'ClientApiController@contactUs');
+   Route::get('{animal}', 'ClientApiController@AnimalData');
 });
 
 /* ---------------------- END ANGULAR.JS API ROUTES ---------------------- */
