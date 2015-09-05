@@ -100,7 +100,7 @@
             </div>
             <div class="large-12 columns">
                 <p class="copyright-credits">&copy 2015 Copyrighted. Developed by
-                    <a href="http://www.danilonavas.net" target="blank">D.Navas</a> and D.Silver.
+                    <a href="http://www.danilonavas.net" target="blank">D. Navas</a> and D.Silver.
                 </p>
             </div>
         </div>

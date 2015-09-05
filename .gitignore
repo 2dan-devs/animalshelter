@@ -2,6 +2,9 @@
 /bootstrap/compiled.php
 /vendor
 
+# Omit docs
+/docs
+
 # Omit composer if exists
 composer.phar
 

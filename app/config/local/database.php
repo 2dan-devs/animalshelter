@@ -22,8 +22,8 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'homestead',
+			'host'      => '127.0.0.1',
+			'database'  => 'animalshelter',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',

@@ -29,9 +29,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => '127.0.0.1',
-			'database'  => 'dn-animal-shelter',
-			'username'  => 'dnavas',
-			'password'  => 'simoncito',
+			'database'  => 'animalshelter',
+			'username'  => 'homestead',
+			'password'  => 'secret',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
